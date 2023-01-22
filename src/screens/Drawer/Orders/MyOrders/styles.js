@@ -7,16 +7,17 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   topTabContainer: {
-    marginTop: vh * 2,
+    marginTop: vh * 4,
     flex: 1,
     width: vw * 100,
     alignItems: 'center',
   },
   tabOuterContainer: {
+    // position: "absolute",
     alignItems: 'center',
     paddingVertical: vh * 2,
-    marginTop: vh*3,
-    marginBottom : vh * 3,
+    // marginTop: vh*3,
+    // marginBottom : vh * 3,
   },
   tabContainer: {
     flexDirection: 'row',

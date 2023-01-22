@@ -9,6 +9,7 @@ import HomeNavigator from '../HomeNavigator';
 import LinearGradient from 'react-native-linear-gradient';
 import OutfitMedium from '../../components/Texts/OutfitMedium';
 import MyOrders from '../../screens/Drawer/Orders/MyOrders';
+import OrderNavigator from '../OrderNavigator';
 
 const Tab = createBottomTabNavigator();
 
@@ -16,7 +17,7 @@ const icons = {
   CartNavigator: {icon: tabIcons.cart},
   TrainingNavigator: {icon: tabIcons.dumbbell},
   HomeNavigator: {icon: tabIcons.home},
-  MyOrders: {icon: tabIcons.planning},
+  OrderNavigator: {icon: tabIcons.planning},
   MySessionNavigator: {icon: tabIcons.calendar},
 };
 
@@ -29,7 +30,7 @@ const TabNavigator = props => {
       tabBar={tabProps => <MyTabBar {...tabProps} {...props} />}
       >
       <Tab.Screen name="HomeNavigator" component={HomeNavigator} options={{headerShown:false}}/>
-      <Tab.Screen name="MyOrders" component={MyOrders} options={{headerShown:false}}/>
+      <Tab.Screen name="OrderNavigator" component={OrderNavigator} options={{headerShown:false}}/>
 
       {/* <Tab.Screen name="CartNavigator" component={CartNavigator} />
       <Tab.Screen name="MealNavigator" component={MealNavigator} />

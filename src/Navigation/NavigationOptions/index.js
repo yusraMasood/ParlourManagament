@@ -11,7 +11,8 @@ import {vh, vw} from '../../utils/dimensions';
 import styles from './styles';
 
 const routesWithBackIcon = {
-  ProductDetails:"ProductDetails"
+  ProductDetails:"ProductDetails",
+  OrderDetails:"OrderDetails"
 };
 const routesWithMenu = {
   
@@ -23,7 +24,9 @@ const routesWithNotification = {
 };
 const titles = {
   HomeScreen:"Home",
-  ProductDetails:"Salon Detail"
+  ProductDetails:"Salon Detail",
+  MyOrders:"MyTabs",
+  OrderDetails:"Booking  Details"
 
 };
 

@@ -66,7 +66,7 @@ const ProductDetails = props => {
           <CustomButton
             text="Book Salon"
             style={styles.btnView}
-            onPress={() => props.navigation.navigate('ShopProducts')}
+            // onPress={() => props.navigation.navigate('MyOrders')}
             // linearColors={linearColors.white}
             // buttonStyle={styles.buttonStyle}
             // textStyle={styles.btnText}

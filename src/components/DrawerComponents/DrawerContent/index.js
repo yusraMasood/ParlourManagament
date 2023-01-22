@@ -1,7 +1,7 @@
 import React, {useRef, useEffect} from 'react';
 import styles from './styles';
 import DrawerButton from '../DrawerButton';
-import {useDispatch} from 'react-redux';
+// import {useDispatch} from 'react-redux';
 import {Image, View, Text} from 'react-native';
 // import Animated from 'react-native-reanimated';
 import {useDrawerProgress} from '@react-navigation/drawer';

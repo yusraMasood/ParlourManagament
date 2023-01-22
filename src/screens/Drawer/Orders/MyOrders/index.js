@@ -14,6 +14,8 @@ const MyOrders = props => {
 
 
 
+
+
   const OrderTab = props => {
     return (
       <View style={styles.tabOuterContainer}>
@@ -36,13 +38,13 @@ const MyOrders = props => {
                 style={
                   isFocused ? styles.focussedBtnContainer : styles.btnContainer
                 }>
-                {/* {isFocused ? (
+                {isFocused ? (
                   <OutfitBold style={styles.focussedBtnText}>
                     {label}
                   </OutfitBold>
                 ) : (
                   <OutfitRegular style={styles.btnText}>{label}</OutfitRegular>
-                )} */}
+                )}
               </RippleHOC>
             );
           })}
@@ -51,12 +53,46 @@ const MyOrders = props => {
       </View>
     );
   };
+  const allOrders=[{
+    status:"pending",
+    id:1,
+  },
+  {
+    status:"delivered",
+    id:2,
+  },
+  {
+    status:"inprocess",
+    id:3,
+  },
+  {
+    status:"pending",
+    id:4,
+  },
+  {
+    status:"inprocess",
+    id:5,
+  },
+  {
+    status:"inprocess",
+    id:6,
+  },
+  {
+    status:"delivered",
+    id:7,
+  },
+  {
+    status:"delivered",
+    id:8,
+  },
+
+]
   const AllOrders = props => {
     return (
       <View style={styles.container}>
         <View>
           <FlatList
-            data={[1,2,3,4]}
+            data={allOrders}
             ListEmptyComponent={EmptyComponent}
             // contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
@@ -65,7 +101,7 @@ const MyOrders = props => {
                 <OrderCard
                   item={item}
                   onPress={() =>
-                    props.navigation.navigate('OrderDetails', {id: item?.id})
+                    props.navigation.navigate('OrderDetails', {status: item?.status})
                   }
                 />
               );
@@ -76,14 +112,13 @@ const MyOrders = props => {
     );
   };
   const PendingOrders = props => {
-    // const pendingOrders = useSelector(state=> state?.order?.data?.res)
-    // console.log("pending",pendingOrders);
+    const pendingOrders = allOrders?.filter(item => item.status == 'pending');
 
     return (
       <View style={styles.container}>
         <View>
           <FlatList
-            data={[1,2,3,4]}
+            data={pendingOrders}
             ListEmptyComponent={EmptyComponent}
             // contentContainerStyle={styles.contentContainer}
             showsVerticalScrollIndicator={false}
@@ -93,7 +128,7 @@ const MyOrders = props => {
                 <OrderCard
                   item={item}
                   onPress={() =>
-                    props.navigation.navigate('OrderDetails', {id: item?.id})
+                    props.navigation.navigate('OrderDetails', {status: item?.status})
                   }
                 />
               );
@@ -104,12 +139,14 @@ const MyOrders = props => {
     );
   };
   const CompletedOrders = props => {
+    const completedOrders = allOrders?.filter(item => item.status == 'completed');
+
 
     return (
       <View style={styles.container}>
         <View>
           <FlatList
-            data={[1,2,3]}
+            data={completedOrders}
             ListEmptyComponent={EmptyComponent}
             // contentContainerStyle={styles.contentContainer}
 
@@ -119,7 +156,7 @@ const MyOrders = props => {
                 <OrderCard
                   item={item}
                   onPress={() =>
-                    props.navigation.navigate('OrderDetails', {id: item?.id})
+                    props.navigation.navigate('OrderDetails', {status: item?.status})
                   }
                 />
               );
@@ -130,21 +167,23 @@ const MyOrders = props => {
     );
   };
   const InProcessOrders = props => {
+    const inProcess = allOrders?.filter(item => item.status == 'inProcess');
+
 
     return (
       <View style={styles.container}>
         <View>
           <FlatList
-            data={[1,2,3,4]}
+            data={inProcess}
             ListEmptyComponent={EmptyComponent}
-            // contentContainerStyle={styles.contentContainer}
+            // contentContainerStyle={styles.contentContainer} 
             showsVerticalScrollIndicator={false}
             renderItem={({item}) => {
               return (
                 <OrderCard
                   item={item}
                   onPress={() =>
-                    props.navigation.navigate('OrderDetails', {id: item?.id})
+                    props.navigation.navigate('OrderDetails', {status: item?.status})
                   }
                 />
               );
@@ -154,25 +193,31 @@ const MyOrders = props => {
       </View>
     );
   };
-  // const MyTabs = props => {
-  //   return (
-  //     <Tab.Navigator
-  //       initialRouteName="InProcessOrders"
-  //       // tabBar={tabProps => <OrderTab {...tabProps} {...props} />}
-  //       >
-  //       <Tab.Screen name="All" component={AllOrders} />
-  //       <Tab.Screen name="Pending" component={PendingOrders} />
-  //       <Tab.Screen name="In-Process" component={InProcessOrders} />
-  //       <Tab.Screen name="Completed" component={CompletedOrders} />
-  //     </Tab.Navigator>
-  //   );
-  // };
+  const MyTabs = props => (
+    <Tab.Navigator
+      initialRouteName="InProcessOrders"
+      screenOptions={{
+        // tabBarLabelPosition: "a"tab
+        // tabBarLabelStyle:{position: "absolute",top:0}
+        // tabBarLabelPosition:"below-icon   "
+      }}
+
+      //  sceneContainerStyle={{position: "absolute"}}
+      tabBar={tabProps => <OrderTab {...tabProps} {...props} />
+    }
+    >
+      <Tab.Screen name="All" component={AllOrders} />
+      <Tab.Screen name="Pending" component={PendingOrders} />
+      <Tab.Screen name="In-Process" component={InProcessOrders} />
+      <Tab.Screen name="Completed" component={CompletedOrders} />
+    </Tab.Navigator>
+  );
 
   return (
     <ScreenWrapper style={styles.container}>
       <View style={styles.topTabContainer}>
 
-        
+        {MyTabs()}
       </View>
     </ScreenWrapper>
   );

@@ -37,8 +37,8 @@ const OrderCard = (props) => {
   return (
     <RippleHOC style={[styles.container, props.containerStyle]} onPress={props.onPress}>
      <View>
-       <OutfitMedium style={[styles.cancelText]}>Order ID: {props?.item?.order_number}</OutfitMedium>
-       <OutfitRegular style={styles.orderText}>{props?.item?.products[0]?.title}</OutfitRegular>
+       <OutfitMedium style={[styles.cancelText]}>Booking ID: 1</OutfitMedium>
+       {/* <OutfitRegular style={styles.orderText}>{props?.item?.products[0]?.title}</OutfitRegular> */}
        {/* <OutfitRegular style={styles.dateText}>{moment(props?.item?.createdAt).format("MMM DD YYYY HH:MM A")}</OutfitRegular> */}
      </View>
 
@@ -46,7 +46,7 @@ const OrderCard = (props) => {
       <View style={[styles.btnContainer,statusColorBackground()]}> 
       <OutfitMedium style={[styles.status,statusColor()]}>{props?.item?.status}</OutfitMedium>
       </View>
-      <OutfitRegular style={styles.priceText}>${props?.item?.amount}</OutfitRegular>
+      <OutfitRegular style={styles.priceText}>$100</OutfitRegular>
      </View>
     </RippleHOC>
   );
