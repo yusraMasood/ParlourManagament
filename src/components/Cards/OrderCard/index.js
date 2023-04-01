@@ -6,7 +6,6 @@ import OutfitRegular from '../../Texts/OutfitRegular';
 import RippleHOC from '../../wrappers/Ripple';
 import { generalImages, icons } from '../../../assets/images';
 import OutfitMedium from '../../Texts/OutfitMedium';
-// import moment from 'moment/moment';
 
 const OrderCard = (props) => {
   // console.log("props",props);

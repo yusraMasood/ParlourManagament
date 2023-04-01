@@ -45,7 +45,7 @@ export const generalImages = {
     // facebook: require('./icons/facebook.png'),
     eyesOff: require('./icons/eyesOff.png'),
     // leftArrow: require('./icons/leftArrow.png'),
-    // menu: require('./icons/menu.png'),
+    menu: require('./icons/menu.png'),
     // notification: require('./icons/notification.png'),
     // circle: require('./icons/circle.png'),
     // rightIcon: require('./icons/rightIcon.png'),

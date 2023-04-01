@@ -12,9 +12,16 @@ import styles from './styles';
 
 const routesWithBackIcon = {
   ProductDetails:"ProductDetails",
-  OrderDetails:"OrderDetails"
+  OrderDetails:"OrderDetails",  
+  EditProfileScreen:"Edit Profile",
 };
 const routesWithMenu = {
+  MyProfileScreen:"My Profile",
+  TermsAndConditions:"Terms And Conditions",
+  PrivacyPolicy:"Privacy Policy",
+  HomeScreen:"Home",
+  MyOrders:"MyOrders",
+  ContactUs:"ContactUs"
   
 };
 
@@ -25,8 +32,13 @@ const routesWithNotification = {
 const titles = {
   HomeScreen:"Home",
   ProductDetails:"Salon Detail",
-  MyOrders:"MyTabs",
-  OrderDetails:"Booking  Details"
+  MyOrders:"Booking",
+  OrderDetails:"Booking  Details",
+  EditProfileScreen:"Edit Profile",
+  MyProfileScreen:"My Profile",
+  TermsAndConditions:"Terms And Conditions",
+  PrivacyPolicy:"Privacy Policy",
+  ContactUs:"Contact Us"
 
 };
 
@@ -100,51 +112,21 @@ const renderheaderRight = props => {
 };
 
 export const drawerRoutes = {
-  WaterStack: {
-    label: 'Water Reminder',
-  },
+
   HomeStack: {
     label: 'Home',
   },
-  WeightStack: {
-    label: 'Weight Tracker',
-  },
-  OrderStack: {
-    label: 'My Orders',
-  },
-  // MealStack: {
-  //   label: 'Meal Plans',
-  // },
-  FoodStack: {
-    label: 'Food Intake - Logs',
-  },
-  VideoStack: {
-    label: 'On Demand Videos',
-  },
 
-  SubscriptionStack: {
-    label: 'Subscription Logs',
-  },
-  WorkoutStack: {
-    label: 'Workout Reminder',
-  },
+
   ProfileStack: {
     label: 'My Profile',
   },
   ContactStack: {
     label: 'Contact Us',
   },
-  ReminderStack: {
-    label: 'Reminders Listing',
-  },
+
   PrivacyStack: {
     label: 'Privacy Policy',
-  },
-  TermsStack: {
-    label: 'Terms & Conditions',
-  },
-  SessionStack: {
-    label: 'Online Sessions',
   },
 };
 

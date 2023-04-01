@@ -31,8 +31,10 @@ const DrawerButton = props => {
     // <AnimatedTouchable
     //   onPress={() => props.onPress(props.routeName)}
     //   style={[styles.container, animatedStyles]}>
-    <RippleHOC onPress={() => props.onPress(props.routeName)}>
-    <View style={styles.drawerButtonContainer}>
+    <RippleHOC 
+    style={styles.drawerButtonContainer}
+    onPress={() => props.onPress(props.routeName)}>
+    {/* <View style={styles.drawerButtonContainer}> */}
       {/* <View style={styles.iconContainer}>
         <Image style={styles.icon} source={routeConfigs.icon} />
       </View> */}
@@ -41,7 +43,7 @@ const DrawerButton = props => {
         {routeConfigs.label}
       </OutfitRegular>
       </View>
-      </View>
+      {/* </View> */}
       </RippleHOC>
     // </AnimatedTouchable>
   );

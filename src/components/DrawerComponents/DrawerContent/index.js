@@ -1,37 +1,23 @@
 import React, {useRef, useEffect} from 'react';
 import styles from './styles';
 import DrawerButton from '../DrawerButton';
-// import {useDispatch} from 'react-redux';
 import {Image, View, Text} from 'react-native';
-// import Animated from 'react-native-reanimated';
 import {useDrawerProgress} from '@react-navigation/drawer';
-import {TouchableOpacity} from 'react-native-gesture-handler';
 import {vh, vw} from '../../../utils/dimensions';
-import {generalImages, icons} from '../../../assets/images';
-import OutfitRegular from '../../Texts/OutfitRegular';
 import {drawerRoutes} from '../../../Navigation/NavigationOptions';
 import Animated from 'react-native-reanimated';
+import OutfitRegular from '../../Texts/OutfitRegular';
 import CustomButton from '../../Buttons/CustomButton';
 import GeneralPopup from '../../popups/GeneralPopup';
-// import {useSelector} from 'react-redux';
-import {
-  logout,
-  LogoutUser,
-  selectUser,
-} from '../../../StateManagement/UserSlice';
+import { generalImages } from '../../../assets/images';
+// import {
+//   logout,
+//   LogoutUser,
+//   selectUser,
+// } from '../../../StateManagement/UserSlice';
 
 const routeOrders = [
   'HomeStack',
-  'VideoStack',
-  'SessionStack',
-  'WaterStack',
-  'WeightStack',
-  'WorkoutStack',
-  'ReminderStack',
-  'FoodStack',
-  'OrderStack',
-  'SubscriptionStack',
-  'MealStack',
   'ProfileStack',
   'TermsStack',
   'PrivacyStack',
@@ -44,7 +30,7 @@ const DrawerContent = props => {
   // console.error(userDetails?.image_url);
 
   // console.log("user",user);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   const initialOpacity = new Animated.Value(1);
   const initialMove = new Animated.Value(0);
@@ -62,7 +48,7 @@ const DrawerContent = props => {
   const logoutUser = () => {
     // dispatch(logout)
     // dispatch(logout());
-    dispatch(LogoutUser());
+    // dispatch(LogoutUser());
   };
   const progress = useDrawerProgress();
   const opacity = Animated.interpolateNode(progress, {
@@ -107,21 +93,17 @@ const DrawerContent = props => {
   return (
     // <Animated.View style={[styles.container]}>
     <View style={styles.drawerContainer}>
-      {/* <Animated.View style={[styles.header, animatedStylesImage]}>
+      <Animated.View style={[styles.header, animatedStylesImage]}>
         <View style={styles.profileImageContainer}>
           <Image
-            source={
-              userDetails?.image
-                ? {uri: userDetails?.image_url}
-                : generalImages.defaultUserImage
-            }
+            source={ generalImages.defaultUserImage }
             style={styles.profileImage}
           />
         </View>
 
         <View style={styles.headerRight}>
           <OutfitRegular style={styles.username}>
-            {userDetails?.first_name} {userDetails?.last_name}
+            Atlas Corrigan
           </OutfitRegular>
         </View>
       </Animated.View>
@@ -152,7 +134,7 @@ const DrawerContent = props => {
         icon={generalImages.question}
         title="Logout"
         details="Are You Sure you want to Logout?"
-      /> */}
+      />
     </View>
     // </Animated.View>
   );

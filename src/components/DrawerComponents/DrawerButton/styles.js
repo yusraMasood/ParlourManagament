@@ -17,10 +17,13 @@ const styles = StyleSheet.create({
   },
   drawerButtonContainer: {
     // backgroundColor: colors.red,
-    alignItems: 'center',
+    // alignItems: 'center',
+    marginBottom: vh*4,
+    // backgroundColor: "red",
+    width: vw*30,
   },
   text: {
-    width: vw * 35,
+    // width: vw * 35,
     paddingVertical: vh * 1.1,
   },
   iconContainer: {

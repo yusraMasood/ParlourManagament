@@ -10,7 +10,7 @@ import styles from './styles';
 import {linearColors} from '../../../utils/appTheme';
 import CircularSemiBold from '../../Texts/CircularSemiBold';
 import OutfitSemiBold from '../../Texts/OutfitSemiBold';
-import {getCartItems, postAddToCart} from '../../../StateManagement/HomeSlice';
+// import {getCartItems, postAddToCart} from '../../../StateManagement/HomeSlice';
 // import {useDispatch} from 'react-redux';
 
 const CartCard = props => {

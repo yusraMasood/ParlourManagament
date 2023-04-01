@@ -1,5 +1,5 @@
 import { containNumberReg, emailReg, leadingZeros, lowerReg, nameReg, numberReg, specialCharReg, upperReg } from "./Regex"
-import moment from 'moment'
+// import moment from 'moment'
 import { minAgeInDays } from "./Constants"
 export const validateEmail = email => {
     return emailReg.test(email)
@@ -25,18 +25,18 @@ export const validateContainNumber = value => {
 export const validateSpecialCharacter = value => {
     return specialCharReg.test(value)
 }
-export const validateDOB = value => {
-    // console.log("osjosjosjosj");
+// export const validateDOB = value => {
+//     // console.log("osjosjosjosj");
 
-    var parsedValue = moment(value)
-    console.log("pparsed value",parsedValue);
-    var days = moment().diff(parsedValue, 'days')
-    if(days < minAgeInDays){
-        // console.log("uoauosuosij");
-        return false
-    }
-    return true
-}
+//     var parsedValue = moment(value)
+//     console.log("pparsed value",parsedValue);
+//     var days = moment().diff(parsedValue, 'days')
+//     if(days < minAgeInDays){
+//         // console.log("uoauosuosij");
+//         return false
+//     }
+//     return true
+// }
 export const confirmPassword = (password1, password2) => {
     return true
 }

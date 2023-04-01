@@ -1,10 +1,10 @@
 import {useNavigation} from '@react-navigation/native';
 import React, {useRef, useImperativeHandle, useState} from 'react';
 import {Image, View} from 'react-native';
-import {useDispatch} from 'react-redux';
-import {showToast} from '../../../Api/HelperFunction';
-import {ChangePassword} from '../../../StateManagement/UserSlice';
-import {colors, linearColors} from '../../../utils/appTheme';
+// import {useDispatch} from 'react-redux';
+// import {showToast} from '../../../Api/HelperFunction';
+// import {ChangePassword} from '../../../StateManagement/UserSlice';
+// import {colors, linearColors} from '../../../utils/appTheme';
 import {vh, vw} from '../../../utils/dimensions';
 import CustomButton from '../../Buttons/CustomButton';
 import InputField from '../../Inputs/InputField';
@@ -23,45 +23,45 @@ const ChangePasswordPopup = props => {
   const newPasswordRef = useRef(null);
   const confirmPasswordRef = useRef(null);
   const [confirmPassword, setConfirmPassword] = useState('');
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
-  const submit = () => {
-    if (newPassword == '') {
-      return showToast('Please Enter New Password');
-    }
-    if (oldPassword == '') {
-      return showToast('Please Enter your Old Password');
-    }
-    if (confirmPassword == '') {
-      return showToast('Please Enter Confirm Password');
-    }
-    if (newPassword.length < 8) {
-      return showToast('password should be greater than 8 digit');
-    }
-    if (newPassword.length > 17) {
-      return showToast("Password's should not be more than 16 digit");
-    }
-    if (newPassword == oldPassword) {
-      return showToast(`You can't use your old Password`);
-    }
-    if (newPassword !== confirmPassword) {
-      return showToast('Password does not match');
-    }
-    // if (oldPassword == newPassword) {
-    //   return showToast('Please dont use Old Password')
-    // }
-    const body = {
-      current_password: oldPassword,
-      password: newPassword,
-      password_confirmation: confirmPassword,
-    };
-    dispatch(ChangePassword(body)).then(({type}) => {
-      if (type == 'user/changepassword/fulfilled') {
-        hide();
-        navigation.goBack();
-      }
-    });
-  };
+  // const submit = () => {
+  //   if (newPassword == '') {
+  //     return showToast('Please Enter New Password');
+  //   }
+  //   if (oldPassword == '') {
+  //     return showToast('Please Enter your Old Password');
+  //   }
+  //   if (confirmPassword == '') {
+  //     return showToast('Please Enter Confirm Password');
+  //   }
+  //   if (newPassword.length < 8) {
+  //     return showToast('password should be greater than 8 digit');
+  //   }
+  //   if (newPassword.length > 17) {
+  //     return showToast("Password's should not be more than 16 digit");
+  //   }
+  //   if (newPassword == oldPassword) {
+  //     return showToast(`You can't use your old Password`);
+  //   }
+  //   if (newPassword !== confirmPassword) {
+  //     return showToast('Password does not match');
+  //   }
+  //   // if (oldPassword == newPassword) {
+  //   //   return showToast('Please dont use Old Password')
+  //   // }
+  //   const body = {
+  //     current_password: oldPassword,
+  //     password: newPassword,
+  //     password_confirmation: confirmPassword,
+  //   };
+  //   dispatch(ChangePassword(body)).then(({type}) => {
+  //     if (type == 'user/changepassword/fulfilled') {
+  //       hide();
+  //       navigation.goBack();
+  //     }
+  //   });
+  // };
   useImperativeHandle(props?.reference, () => ({
     hide: hide,
     show: show,
@@ -130,13 +130,13 @@ const ChangePasswordPopup = props => {
             inputContainerIcon={styles.input}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
-            onSubmitEditing={submit}
+            // onSubmitEditing={submit}
             // keyboardType="email-address"
           />
           <CustomButton
             text="UPDATE"
             // linearColors={linearColors.blackBtn}
-            onPress={submit}
+            // onPress={submit}
             style={styles.okBtn}
             // style={{marginHorizontal: vw * 2}}
           />
