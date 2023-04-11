@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     marginTop: vh * 2,
     // marginBottom: vh*5,
     fontSize: vh * 2.3,
-    color: colors.blackappText,
+    color: colors.white,
   },
 });
 export default styles;

@@ -14,7 +14,7 @@ const BOTTOMRIGHTPOSITION= -TOPLEFTWIDTH*0.25
 const styles=StyleSheet.create({
 container:{
     flex:1,
-    backgroundColor: colors.white,
+    backgroundColor: colors.black,
     // alignItems: "center",
 },
 // contentContainer:{

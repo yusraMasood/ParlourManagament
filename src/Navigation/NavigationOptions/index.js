@@ -49,6 +49,7 @@ const NavigationOptions = navProps => {
     headerLeft: () => renderheaderLeft(navProps),
     headerBackground: () => renderHeaderBackground(navProps),
     headerTitleAlign: 'center',
+    
     headerLeftContainerStyle: {paddingLeft: 4 * vw},
     headerRightContainerStyle: {paddingRight: 4 * vw},
   };
@@ -65,7 +66,7 @@ const renderTitle = props => {
 
 const renderHeaderBackground = props => {
     return (
-      <SvgCircle/>
+   <View style={{flex:1,backgroundColor: "black"}}></View>
     );
 };
 

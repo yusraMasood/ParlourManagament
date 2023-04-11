@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
     paddingTop: vh * 0.5,
   },
   centerContent:{
-    alignItems: "center",
+    // alignItems: "center",
     marginLeft: vw*3,
 
   },
@@ -47,9 +47,6 @@ const styles = StyleSheet.create({
   },
   containerMain: {},
   scroll: {
-    alignItems: "center",
-    paddingTop: vh*4,
-    // paddingHorizontal: vw*4,
     
   },
   imgBorder: {
@@ -105,12 +102,7 @@ const styles = StyleSheet.create({
   paraText: {
     fontSize: vh * 1.7,
     paddingTop: vh * 1,
-    width: vw*95,
-    // marginLeft: vw*3,
-    // marginRight:vw*3,
-    // marginBottom: vh*2,
-    // marginHorizontal: vw*3,
-    // alignSelf: "center",
+    color: colors.white
 
   },
   circleOuterContainer: {
@@ -122,7 +114,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   veganHeadText: {
-    color: colors.black,
+    color: colors.white,
     paddingTop: vh * 1.8,
     fontSize: vh * 2.1,
     // alignSelf: "center",

@@ -8,8 +8,6 @@ const styles = StyleSheet.create({
   },
   profileMainContainer: {
     flexDirection: 'row',
-    // paddingTop: vh * 4,
-    // backgroundColor: "red",
     width: vw * 70,
     justifyContent: 'space-between',
   },
@@ -17,26 +15,15 @@ const styles = StyleSheet.create({
     marginBottom: vh * 4,
   },
   passwordText: {
-    color: colors.maroon,
-    // backgroundColor: "red",
+    color: colors.defaultThemeRed,
     textDecorationLine: 'underline',
-    // borderBottomWidth:1,
-    // borderBottomColor: colors.maroon,
-    // marginBottom: vh*3,
-  },
-  linearInScreen: {
-    // marginTop: vh * 7,
-    // backgroundColor: "blue"
   },
   btnContainer: {
     marginTop: vh * 2,
   },
   imgContainer: {
     alignItems: 'center',
-    marginTop: vh * 13,
-    // backgroundColor: "green"
-
-    // width: vw * 100,
+    marginVertical: vh * 3,
   },
   rowContainer: {
     marginBottom: vh * 5,
@@ -53,16 +40,14 @@ const styles = StyleSheet.create({
   nameText: {
     fontSize: vh * 1.8,
     paddingTop: vh * 1,
+    color: colors.white
   },
   headingText: {
-    color: colors.blackappText,
+    color: colors.white,
     fontSize: vh * 1.9,
   },
   profileContainer: {
-    paddingTop: vh * 11,
     alignItems: 'center',
-    // backgroundColor: "blue"
-    // paddingHorizontal: vw*7,
   },
   container: {
     // height: vh * 18,

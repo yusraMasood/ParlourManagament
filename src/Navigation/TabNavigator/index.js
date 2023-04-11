@@ -70,7 +70,7 @@ const MyTabBar = ({state, navigation}) => {
               style={{
                 height: vh * 2.4,
                 width: vh * 2.4,
-                tintColor: isFocused ? colors.red : colors.tabIconColor,
+                tintColor: isFocused ? colors.defaultThemeRed : colors.white,
               }}
               resizeMode="contain"
             />
@@ -80,11 +80,6 @@ const MyTabBar = ({state, navigation}) => {
                 {icons[route?.name]?.name}
               </OutfitMedium>
             </View>
-            {isFocused && (
-              <LinearGradient
-                colors={linearColors.defaultRed}
-                style={styles.dotStyle}></LinearGradient>
-            )}
           </TouchableOpacity>
         );
       })}

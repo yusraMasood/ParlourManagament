@@ -11,9 +11,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-around',
-    borderTopLeftRadius: vh * 3,
-    borderTopRightRadius: vh * 3,
-    backgroundColor: colors.white,
+    // borderTopLeftRadius: vh * 3,
+    // borderTopRightRadius: vh * 3,
+    backgroundColor: colors.black,
     ...themeShadow,
   },
   screenFocus: {

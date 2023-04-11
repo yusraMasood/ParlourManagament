@@ -37,7 +37,7 @@ forgotContainer:{
 
 },
 forgotPassword:{
-    color: colors.black,
+    color: colors.white,
     textDecorationLine: "underline",
     fontSize: vh*1.65
 },
@@ -62,7 +62,7 @@ signupAccount:{
     marginTop: vh*2,
     marginBottom: vh*5,
     fontSize: vh*2.3,
-    color: colors.blackappText,
+    color: colors.white,
 },
 })
 export default styles

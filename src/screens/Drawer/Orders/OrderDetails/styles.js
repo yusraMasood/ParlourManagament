@@ -110,9 +110,11 @@ const styles = StyleSheet.create({
         color: colors.greyText
     },
     orderIdValue: {
-        color: colors.black,
-        paddingTop: vh * 0.6,
-        fontSize: vh * 1.9
+        color: colors.white,
+        paddingTop: vh * 1,
+        fontSize: vh * 1.7,
+        paddingBottom: vh*1
+        
     }
 
 })

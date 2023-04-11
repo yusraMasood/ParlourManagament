@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
 
     },
     text: {
-        color: colors.blackappText,
+        color: colors.white,
         paddingLeft: vw*4,
     },
     socialIcon:{

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styles from './styles';
+import { View } from 'react-native'
 
 import Ripple from '../../wrappers/Ripple';
 import OutfitRegular from '../../Texts/OutfitRegular';
@@ -15,9 +16,9 @@ const CustomButton = (props) => {
   return (
 
     <Ripple style={[styles.container, props.style]} onPress={handleOnPress}>
-      <LinearGradient colors={props.linearColors ? props.linearColors : linearColors.defaultRed} style={[styles.ButtonWrapper, props.buttonStyle]}>
+      <View  style={[styles.ButtonWrapper, props.buttonStyle]}>
         <OutfitRegular style={[styles.text, props.textStyle]}>{props.text}</OutfitRegular>
-      </LinearGradient>
+      </View>
     </Ripple>
   );
 };

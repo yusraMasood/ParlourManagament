@@ -31,8 +31,9 @@ const ProductDetails = props => {
   };
   // console.log("productDetail?.media", productDetail);
   return (
-    <ContentContainer contentContainerStyle={styles.scroll}>
-      <ScreenWrapper style={styles.container}>
+  
+      <ScreenWrapper >
+          <ContentContainer style={styles.scroll}>
         <View style={styles.productImages}>
           <FlatList
             data={[1,2,3]}
@@ -46,7 +47,7 @@ const ProductDetails = props => {
             Zareena Beauty Palour
           </OutfitMedium>
           <OutfitRegular style={styles.paraText}>
-           Zareena is very Popular salon in karachi. Many celebrities have visited this salon and loved it. one of the famous celebrities is Minal khan, Mahira khan,
+           Zareena is very Popular salon in karachi. Many celebrities have visited this slon and loved it. one of the famous celebrities is Minal khan, Mahira khan,
            and ayeza khan.
           </OutfitRegular>
        
@@ -72,8 +73,8 @@ const ProductDetails = props => {
             // textStyle={styles.btnText}
           />
         </View>
+        </ContentContainer>
       </ScreenWrapper>
-    </ContentContainer>
   );
 };
 export default ProductDetails;

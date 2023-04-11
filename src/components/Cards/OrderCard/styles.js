@@ -12,14 +12,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     height: vh * 11,
     // marginTop: vh*1,
-    backgroundColor: colors.white,
-    padding: vh * 1,
+    backgroundColor: colors.defaultThemeRed,
+    padding: vh * 2,
     marginBottom: vh * 2.5,
     marginTop: vh * 1,
     marginHorizontal: vw * 1,
-    // backgroundColor: "red",
-    ...themeShadow,
-    // marginTop: vh
+    borderRadius: vh*2
   },
   btnContainer:{
     // height: vh
@@ -66,7 +64,7 @@ const styles = StyleSheet.create({
   },
   priceText: {
     fontSize: vh * 2.2,
-    color: colors.defaultRed,
+    color: colors.white,
   },
   orderText: {
     fontSize: vh * 1.9,
@@ -77,7 +75,7 @@ const styles = StyleSheet.create({
     fontSize: vh * 1.7,
     // marginVertical: vh*1,
     // backgroundColor: "blue",
-    color: colors.blackappText,
+    color: colors.white,
     paddingBottom: vh * 1,
     // marginTop: vh*1
   },

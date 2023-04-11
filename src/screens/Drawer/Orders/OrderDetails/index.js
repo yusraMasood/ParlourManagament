@@ -11,20 +11,6 @@ import styles from "./styles"
 
 const OrderDetails = (props) => {
     const [responseData,setResponseData] =useState(null)
-    // console.log("props?.route?.params?.id",props?.route?.params?.id);
-
-    // const dispatch= useDispatch()
-
-    // useEffect(() => {
-    //     const body={
-    //         id:props?.route?.params?.id
-    //             }
-    //       dispatch(getOrderDetails(body)).then(res=>{
-    //         console.log("res?.payload",res?.payload);
-    //         setResponseData(res?.payload?.detail)
-      
-    //       }); 
-    //     }, []);
 
     const renderItem = (props) => {
         console.log("props", props);

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
         height: vh*11.2,
         borderRadius: vh*2,
         justifyContent: "space-between",
-        backgroundColor: colors.white,
+        backgroundColor: colors.defaultThemeRed,
         ...themeShadow
     },
     veganText:{

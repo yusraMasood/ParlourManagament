@@ -1,6 +1,7 @@
 import React, {useImperativeHandle, useRef, useState} from 'react';
 import {View, TextInput, Image, TouchableOpacity} from 'react-native';
 import {icons} from '../../../assets/images';
+import { colors } from '../../../utils/appTheme';
 import OutfitRegular from '../../Texts/OutfitRegular';
 
 import styles from './styles';
@@ -35,6 +36,7 @@ const InputField = props => {
             onChangeText={props.onChangeText}
             style={[styles.input, props.inputContainer]}
             placeholder={props.placeholder}
+            placeholderTextColor={colors.white}
             // {...props}
           />
         {props.rightIcon2 && (

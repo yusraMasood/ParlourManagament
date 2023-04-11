@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     // flexDirection: 'row',
     borderBottomWidth: 1,
     paddingTop: vh * 1,
-    borderColor: colors.borderColor2,
+    borderColor: colors.white,
     flexDirection: 'row',
     alignItems: 'center',
     width: vw * 85,
@@ -40,7 +40,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.Outfit.regular,
     padding: 0,
     // paddingBottom: vh * 1,
-    color: colors.blackappText,
+    color: colors.white,
     fontSize: vh * 1.9,
     // paddingBottom: vh * 0.5,
     // opacity: 0.1
@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   label: {
-    color: colors.blackappText,
+    color: colors.white,
     marginBottom: vh * 1,
     fontSize: vh * 1.9,
   },

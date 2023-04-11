@@ -23,7 +23,7 @@ const styles = StyleSheet.create({
     // width: vw*80,
     fontSize: vh * 1.9,
     paddingBottom: vh * 1,
-    color: colors.blackNew,
+    color: colors.white,
   },
   stericText: {
     color: colors.red,

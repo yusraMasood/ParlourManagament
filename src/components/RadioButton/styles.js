@@ -27,5 +27,6 @@ export const styles = StyleSheet.create({
   title: {
     paddingLeft: vw * 3,
     fontSize: vh * 1.9,
+    color: colors.white
   },
 });

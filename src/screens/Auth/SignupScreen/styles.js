@@ -117,10 +117,10 @@ const styles = StyleSheet.create({
     marginTop: vh * 2,
     marginBottom: vh * 5,
     fontSize: vh * 2.3,
-    color: colors.blackappText,
+    color: colors.white,
   },
   label: {
-    color: colors.blackappText,
+    color: colors.white,
     width: vw * 85,
     marginTop: vh * 2.5,
     marginBottom: vh * 1.5,

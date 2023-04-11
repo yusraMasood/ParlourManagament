@@ -3,7 +3,7 @@ export const colors = {
   black: '#000',
   red: '#BA0101',
   blackappText: '#333333',
-  defaultThemeRed: '#A1041E',
+  defaultThemeRed: '#D78BB9',
   borderColor: '#535151',
   grey: '#707070',
   blackNew: '#1E1E1E',

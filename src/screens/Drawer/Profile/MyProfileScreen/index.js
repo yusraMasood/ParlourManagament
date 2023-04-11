@@ -16,15 +16,6 @@ import Header from '../../../../components/Header';
 const MyProfileScreen = props => {
   const popupRef = useRef(null);
 
-  // const userProfile = useSelector(state => state?.user?.user?.user?.userData);
-  // const userProfile = useSelector(state => state?.user?.user?.user?.userData);
-
-  // console.log('userProfile', userProfile);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(GetProfile());
-  // }, []);
-
   const profile = [
     {
       name: 'First Name',
@@ -47,29 +38,19 @@ const MyProfileScreen = props => {
       value: "29/18/23",
     },
   ];
-  useLayoutEffect(() => {
-    props.navigation.setOptions({
-      headerBackground: () => {
-        return (
-          <View style={{backgroundColor: 'green'}}>
-            <Header />
-            <View style={styles.imgContainer}>
+
+
+  return (
+    <ScreenWrapper
+      style={styles.profileContainer}
+      linear={styles.linearInScreen}>
+         <View style={styles.imgContainer}>
               <Image
                 source={ generalImages.defaultUserImage
                 }
                 style={styles.userImage}
               />
             </View>
-          </View>
-        );
-      },
-    });
-  }, [props.navigation]);
-
-  return (
-    <ScreenWrapper
-      style={styles.profileContainer}
-      linear={styles.linearInScreen}>
       <RippleHOC
         style={styles.changePasswordContainer}
         onPress={() => popupRef.current.show()}>

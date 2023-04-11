@@ -15,8 +15,29 @@ const LoginScreen = props => {
   const passwordRef = useRef(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [deviceId,setDevideId]=useState("1133")
   const submit = () => {
-    props.navigation.navigate("MainNavigator")
+    if (email == '') {
+      return showToast('Please enter your email address');
+    }
+    if (!validateEmail(email)) {
+      return showToast('Please enter valid email address');
+    }
+    if (password == '') {
+      return showToast('Please enter your password');
+    }
+    const body = {
+      email,
+      password,
+      device_id: deviceId,
+      device_type: Platform.OS,
+    };
+    dispatch(LoginUser(body)).then(({type}) => {
+      if (type == 'user/loginuser/fulfilled') {
+        console.log('hososophshso');
+        // dispatch(GetProfile());
+      }
+    });
   };
 
   return (

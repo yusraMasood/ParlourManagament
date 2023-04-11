@@ -1,4 +1,5 @@
 import {StyleSheet} from 'react-native';
+import { ColorSpace } from 'react-native-reanimated';
 import {colors, themeShadow} from '../../../../utils/appTheme';
 import {vh, vw} from '../../../../utils/dimensions';
 
@@ -14,7 +15,7 @@ const styles = StyleSheet.create({
     width: vw * 85,
   },
   dobText: {
-    color: colors.blackappText,
+    color: colors.white,
     fontSize: vh * 2,
   },
   requireText: {
@@ -59,7 +60,7 @@ const styles = StyleSheet.create({
     // backgroundColor: "red"
   },
   genderChooseText: {
-    color: colors.blackappText,
+    color: colors.white,
     width: vw * 85,
     fontSize: vh * 1.9,
     marginTop: vh * 3,
@@ -70,8 +71,8 @@ const styles = StyleSheet.create({
     borderRadius: vh * 3,
     position: 'absolute',
     ...themeShadow,
-    top: vh * 20,
-    right: vw * 35,
+    top: vh * 12.5,
+    right: vw * 26,
   },
   cameraIcon: {
     height: vh * 2,
@@ -99,7 +100,7 @@ const styles = StyleSheet.create({
   },
   imgContainer: {
     alignItems: 'center',
-    marginTop: vh * 12,
+    marginVertical: vh * 3,
   },
   rowContainer: {
     marginBottom: vh * 5,
@@ -109,6 +110,7 @@ const styles = StyleSheet.create({
     height: vh * 14,
     width: vh * 14,
     resizeMode: 'cover',
+    backgroundColor: colors.grey,
     // backgroundColor: colors.greyBtnOrder,
     borderRadius: vh * 10,
   },
@@ -122,7 +124,7 @@ const styles = StyleSheet.create({
     fontSize: vh * 1.9,
   },
   profileContainer: {
-    paddingTop: vh * 11,
+    // paddingTop: vh * 11,
     alignItems: 'center',
   },
   detailUserContainer: {
