@@ -1,82 +1,94 @@
-import {getLocale} from '../Translations';
-
 export const urls = {
-  v1: `https://dev74.onlinetestingserver.com:8040/api/`,
+  v1: `https://geoff-backend-production-553f.up.railway.app/user/api`, //dev
 };
 export const base_url = urls.v1;
 export const endpoints = {
   auth: {
-    login: 'login',
-    signup: 'register',
-    recoverPassword: 'verify-email',
-    verifyCode: 'verify-code',
-    resetPassword: 'reset-password',
-    updateProfile: 'update',
-    getProfile: 'me',
-    changePassword: 'change-password',
-    logout: 'logout',
+    login: '/login',
+    logout: '/v1/user/logout',
+    register: '/user-register',
   },
-  general: {
-    home: 'home',
-    contactUs: 'feedback',
-    privacy: 'privacy',
-    productId: 'view-product',
-    products: 'products',
-    notifications: 'notifications',
-    addCart: 'add-to-cart',
-    reminder: 'get-all-reminder',
-    statusReminder: 'reminder-status',
-    cart: 'cart-items',
-    productPayment: 'order-place',
-    deleteCart: 'delete-cart-product',
-    editCart: 'edit-cart',
-    mealPlanDetails: 'view-details',
+  account: {
+    profile: '/v1/user/profile',
+    update: '/v1/user/update-profile',
+    changePassword: '/v1/user/change-password',
   },
-  video: {
-    videos: 'vidoes',
-    subscribe: 'subscribe',
+  passwordRecovery: {
+    verifyEmail: '/v1/user/send/email',
+    verifyCode: '/v1/user/verify-code',
+    updatePassword: '/v1/user/set-password',
   },
-  session: {
-    sessions: 'sessions',
-    sessionById: 'session-by-id',
-    payment: 'book-session',
-    purchasedSession: 'view-my-sessions',
+  category: {
+    home: '/v1/user/home-data',
+    categories: '/v1/user/photographer-categories',
+    categoryById: '/v1/user/category-photographer/',
+    photographersByCategory: '/v1/user/photographers',
+    popularPhotographers: '/v1/user/popular-photographers',
+    serviceProviders: '/v1/user/service-providers',
+    serviceProviderById: '/v1/user/service-providers/',
   },
-  order: {
-    orders: 'orders',
-    viewOrderDetails: 'view-order',
+  photographer: {
+    becomePhotographer: '/v1/user/photographer-signup',
+    orders: '/v1/user/my-orders',
+    orderDetail: '/v1/user/my-orders/',
+    paymentlogs: '/v1/user/payments',
+    myRequests: '/v1/user/my-requests',
+    updateOrderStatus: '/v1/user/accept-reject-my-orders',
   },
-  water: {
-    addWaterIntake: 'water-intake',
-    waterDrank: 'add-water-intake',
-    waterStats: 'water-log',
-    editWater: 'edit-water',
+  wishlist: {
+    remove: '/v1/user/remove-from-favorite/',
+    add: '/v1/user/add-to-favorite/',
+    get: '/v1/user/favorite-photographers',
   },
-  weight: {
-    addWeight: 'add-weight',
-    setGoal: 'weight-goal',
+  miscellaneous: {
+    contactUs: '/v1/user/contact-us',
+    contents: '/v1/user/contents',
   },
-  workout: {
-    addWorkout: 'add-workout',
-    statWeight: 'weight-stat',
-    exercise: 'circuit-time',
-    editWorkout: 'edit-workout',
-    doneWorkout: 'workout-done/8',
+  pets: {
+    get: '/v1/pets',
+    purchase: id => `/v1/pets/${id}/purchase`,
   },
-  food: {
-    addFoodIntake: 'add-food',
-    foodDetails: 'food-intake',
+  adoption: {
+    sendOffer: '/v1/adopts',
+    getOffers: '/v1/adopts',
+    getOfferById: id => `/v1/adopts/${id}`,
+    acceptOffer: (id, status) => `/v1/adopts/${id}/${status}`,
   },
-  subscription: {
-    log: 'subscription-log',
-    myMeal: 'my-meals',
-    mealPlan: 'get-normal-plans',
-    mealPlanPurchase: 'to-purchase',
-    customizedPlan: 'customize-plan',
-    customizePurchase: 'customize-meal-checkout',
+  book: {
+    bookPhotographer: '/v1/user/book-photographer',
+    myBookings: '/v1/user/my-bookings',
+    myBookingDetail: '/v1/user/bookings/',
+    postReview: '/v1/user/add-review',
+  },
+  orders: {
+    getOrders: '/v1/orders',
+    createOrder: `/v1/orders/`,
+    orderDetail: id => `/v1/orders/${id}`,
+    cancelOrder: id => `/v1/orders/${id}`,
+    review: '/v2/reviews',
+  },
+  notifications: {
+    get: '/v1/user/notifications',
+  },
+  products: {
+    get: '/v1/products',
+    productDetail: id => `/v1/products/${id}`,
+  },
+  report: {
+    report: '/v1/reports',
+  },
+  cart: {
+    get: '/v1/cart',
+    add: '/v1/cart',
+    remove: id => `/v1/cart/${id}`,
+  },
+  shop: {
+    get: '/v1/vendors',
+    shopDetails: id => `/v1/vendors/${id}`,
+    review: id => `/v1/products/${id}/reviews`,
   },
 };
-export default configs = {
+export default {
   endpoints: endpoints,
   base_url: base_url,
 };

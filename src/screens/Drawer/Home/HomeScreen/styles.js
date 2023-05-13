@@ -1,28 +1,17 @@
 import {StyleSheet} from 'react-native';
-import {colors, themeShadow} from '../../../../utils/appTheme';
-import {vh, vw} from '../../../../utils/dimensions';
+import {colors} from '../../../../utils/appTheme';
+import {vh} from '../../../../utils/dimensions';
 
 const styles = StyleSheet.create({
-  mainContainer: {
-    flex: 1,
-    backgroundColor: colors.white,
+  markerIconStyle: {
+    height: vh * 5,
+    width: vh * 5,
+    tintColor: colors.red,
+    resizeMode: 'contain',
   },
- 
-  containerMain: {
-    paddingTop: vh * 8,
-  },
-  footer:{
-    marginBottom: vh*10,
-  },
-  
-
-
-
-  dietTextProducts: {
-    color: colors.white,
-    paddingLeft: vw * 6,
-
-    fontSize: vh * 2,
+  btn: {
+    position: 'absolute',
+    bottom: vh * 10,
   },
 });
 export default styles;

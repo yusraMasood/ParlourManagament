@@ -12,19 +12,39 @@ import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
 import AuthWrapper from '../../../components/wrappers/AuthWrapper';
 import styles from './styles';
 import RippleHOC from '../../../components/wrappers/Ripple';
+import useRegister from '../../../Hooks/useRegister';
 
 const SignupScreen = props => {
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+
   const firstNameRef = useRef(null);
   const lastNameRef = useRef(null);
   const emailRef = useRef(null);
+  const phoneRef = useRef(null);
   const passwordRef = useRef(null);
+
+  const {registerUser} = useRegister();
+
   const submitForm = () => {
-    props.navigation.navigate('LoginScreen');
+    var data = {
+      firstName,
+      lastName,
+      email,
+      phone,
+      password,
+      confirmPassword,
+    };
+    registerUser(data).then(res => {
+      if (res?.status) {
+        // console.log('res', res);
+        props.navigation.navigate('LoginScreen');
+      }
+    });
   };
 
   const confirmPasswordRef = useRef(null);
@@ -72,7 +92,7 @@ const SignupScreen = props => {
           require
         />
         <InputField
-          onSubmitEditing={() => passwordRef.current.focus()}
+          onSubmitEditing={() => phoneRef.current.focus()}
           reference={emailRef}
           onChangeText={setEmail}
           value={email}
@@ -81,7 +101,17 @@ const SignupScreen = props => {
           require
           keyboardType={'email-address'}
         />
-       
+
+        <InputField
+          onSubmitEditing={() => passwordRef.current.focus()}
+          reference={phoneRef}
+          onChangeText={setPhone}
+          value={phone}
+          label="Phone Number"
+          placeholder="Enter Phone Number"
+          require
+          keyboardType={'phone-pad'}
+        />
 
         <InputField
           reference={passwordRef}

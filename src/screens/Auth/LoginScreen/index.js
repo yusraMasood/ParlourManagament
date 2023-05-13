@@ -10,34 +10,19 @@ import OutfitRegular from '../../../components/Texts/OutfitRegular';
 import AuthWrapper from '../../../components/wrappers/AuthWrapper';
 import RippleHOC from '../../../components/wrappers/Ripple';
 import styles from './styles';
+import useLogin from '../../../Hooks/useLogin';
 
 const LoginScreen = props => {
   const passwordRef = useRef(null);
+
+  const {loginUser} = useLogin();
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [deviceId,setDevideId]=useState("1133")
+
   const submit = () => {
-    if (email == '') {
-      return showToast('Please enter your email address');
-    }
-    if (!validateEmail(email)) {
-      return showToast('Please enter valid email address');
-    }
-    if (password == '') {
-      return showToast('Please enter your password');
-    }
-    const body = {
-      email,
-      password,
-      device_id: deviceId,
-      device_type: Platform.OS,
-    };
-    dispatch(LoginUser(body)).then(({type}) => {
-      if (type == 'user/loginuser/fulfilled') {
-        console.log('hososophshso');
-        // dispatch(GetProfile());
-      }
-    });
+    loginUser({email, password});
+    // props.navigation.navigate("MainNavigator")
   };
 
   return (
@@ -50,6 +35,7 @@ const LoginScreen = props => {
         <InputField
           label="Email Address"
           placeholder="Enter Email Address"
+          value={email}
           onChangeText={setEmail}
           require
           onSubmitEditing={() => passwordRef.current.focus()}
@@ -59,6 +45,7 @@ const LoginScreen = props => {
           reference={passwordRef}
           onSubmitEditing={submit}
           inputContainerStyle={styles.input}
+          value={password}
           onChangeText={setPassword}
           label="Password"
           placeholder="Enter Password"

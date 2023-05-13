@@ -31,6 +31,7 @@ const routesWithNotification = {
 };
 const titles = {
   HomeScreen:"Home",
+  MapScreen: "Saloons",
   ProductDetails:"Salon Detail",
   MyOrders:"Booking",
   OrderDetails:"Booking  Details",

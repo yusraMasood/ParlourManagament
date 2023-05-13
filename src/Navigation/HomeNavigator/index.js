@@ -4,12 +4,16 @@ import NavigationOptions from '../NavigationOptions';
 import HomeScreen from '../../screens/Drawer/Home/HomeScreen';
 import ProductDetails from '../../screens/Drawer/Home/ProductDetails';
 import MyOrders from '../../screens/Drawer/Orders/MyOrders';
+import MapScreen from '../../screens/Drawer/Home/MapScreen';
 const HomeStack = createStackNavigator();
 
 const HomeNavigator = () => {
   return (
     <HomeStack.Navigator screenOptions={NavigationOptions}>
       <HomeStack.Screen name="HomeScreen" component={HomeScreen}
+      // options={{headerShown: false}}
+      />
+      <HomeStack.Screen name="MapScreen" component={MapScreen}
       // options={{headerShown: false}}
       />
       <HomeStack.Screen name="ProductDetails" component={ProductDetails}

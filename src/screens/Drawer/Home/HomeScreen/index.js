@@ -1,65 +1,116 @@
-import React, {useState, useLayoutEffect, useEffect} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import {
   View,
   Image,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  RefreshControl,
+  StyleSheet,
 } from 'react-native';
-import OutfitMedium from '../../../../components/Texts/OutfitMedium';
 import styles from './styles';
-import OutfitRegular from '../../../../components/Texts/OutfitRegular';
-import ScreenWrapper from '../../../../components/wrappers/ScreenWrapper';
 import {icons} from '../../../../assets/images';
-import RippleHOC from '../../../../components/wrappers/Ripple';
-import FoodItems from '../../../../components/Cards/FoodItems';
+import MapView, {Marker} from 'react-native-maps';
+import {
+  LATITUDE_DELTA,
+  LONGITUDE_DELTA,
+  checkLocationPermissions,
+  getCurrentLocation,
+} from '../../../../utils/helperFunctions';
+import CustomButton from '../../../../components/Buttons/CustomButton';
 
 const HomeScreen = props => {
-  const [refreshing, setRefreshing] = React.useState(false);
-  const [responseData, setResponseData] = useState(null);
-  const onRefresh = React.useCallback(() => {
-    setRefreshing(true);
-    setRefreshing(false);
-  }, []);
-  const renderFoodItems = props => {
-    // console.log("props",props);
-    return (
-      // <RippleHOC onPress={() => props.navigation.navigate('ProductDetails')}>
-      <FoodItems
-        id={props?.item?.id}
-        title={props?.item?.title}
-        price={props?.item?.prices}
-        // image={props?.item?.media[0]?.image_url}
-      />
-      // </RippleHOC>
+  const mapRef = useRef();
+
+  const [initialRegion] = useState({
+    latitude: 37.78825,
+    longitude: -122.4324,
+    latitudeDelta: 0.0922,
+    longitudeDelta: 0.0421,
+  });
+  const [userLocation, setUserLocation] = useState(null);
+
+  const handleDonePress = () => {
+    // props.route.params.handleRoute(searchedAddress);
+    props.navigation.navigate('MapScreen');
+  };
+  const animateToRegion = location => {
+    mapRef.current.animateToRegion(
+      {
+        latitude: location?.latitude,
+        longitude: location?.longitude,
+        latitudeDelta: LATITUDE_DELTA,
+        longitudeDelta: LONGITUDE_DELTA,
+      },
+      2000,
     );
   };
+  const onMarkerDragEnd = async event => {
+    const coordinate = {
+      latitude: event?.nativeEvent?.coordinate?.latitude,
+      longitude: event?.nativeEvent?.coordinate?.longitude,
+    };
+    try {
+      setUserLocation({
+        location: {
+          latitude: parseFloat(coordinate?.latitude),
+          longitude: parseFloat(coordinate?.longitude),
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        },
+      });
+      animateToRegion(coordinate);
+    } catch (e) {
+      // console.log(e);
+      // showToast(e);
+    }
+  };
+  const getUserLocation = async () => {
+    try {
+      const location = await getCurrentLocation();
+      console.log('CURRENT LOCATION', location);
+
+      setUserLocation({
+        location: {
+          latitude: parseFloat(location?.latitude),
+          longitude: parseFloat(location?.longitude),
+          latitudeDelta: LATITUDE_DELTA,
+          longitudeDelta: LONGITUDE_DELTA,
+        },
+      });
+      animateToRegion(location);
+    } catch (error) {
+      // showToast(error);
+    }
+  };
+  const setupMethods = async () => {
+    try {
+      await checkLocationPermissions();
+      getUserLocation();
+    } catch (error) {
+      console.log('location** error ', error);
+    }
+  };
+  useEffect(() => {
+    setupMethods();
+  }, []);
   return (
-    <ScrollView
-      showsVerticalScrollIndicator={false}
-      refreshControl={
-        <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
-      }
-      style={[styles.mainContainer]}>
-      <ScreenWrapper
-        style={styles.containerMain}
-      >
-  
-        <View style={styles.dietContainer}>
-          <OutfitMedium style={styles.dietTextProducts}>
-           Nearest Salons
-          </OutfitMedium>
-        </View>
-        <FlatList
-          data={[1,2,3,4]}
-          renderItem={renderFoodItems}
-          contentContainerStyle={styles.footer}
-          // ListFooterComponent={() => <View style={styles.footer} />}
-        />
-       
-      </ScreenWrapper>
-    </ScrollView>
+    <View
+      style={{
+        flex: 1,
+        alignItems: 'center',
+      }}>
+      <MapView
+        ref={mapRef}
+        initialRegion={initialRegion}
+        style={[StyleSheet.absoluteFillObject]}>
+        {userLocation && (
+          <Marker
+            coordinate={userLocation?.location}
+            draggable={true}
+            onDragEnd={onMarkerDragEnd}>
+            <Image source={icons.locationIcon} style={styles.markerIconStyle} />
+          </Marker>
+        )}
+      </MapView>
+      <CustomButton style={styles.btn} text="Done" onPress={handleDonePress} />
+    </View>
   );
 };
 export default HomeScreen;
