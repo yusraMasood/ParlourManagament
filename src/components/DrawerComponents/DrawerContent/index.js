@@ -10,6 +10,8 @@ import OutfitRegular from '../../Texts/OutfitRegular';
 import CustomButton from '../../Buttons/CustomButton';
 import GeneralPopup from '../../popups/GeneralPopup';
 import { generalImages } from '../../../assets/images';
+import { removeToken } from '../../../state/auth';
+import { useDispatch } from 'react-redux';
 // import {
 //   logout,
 //   LogoutUser,
@@ -30,7 +32,7 @@ const DrawerContent = props => {
   // console.error(userDetails?.image_url);
 
   // console.log("user",user);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   const initialOpacity = new Animated.Value(1);
   const initialMove = new Animated.Value(0);
@@ -46,6 +48,7 @@ const DrawerContent = props => {
   //   });
   // }, []);
   const logoutUser = () => {
+    dispatch(removeToken(null))
     // dispatch(logout)
     // dispatch(logout());
     // dispatch(LogoutUser());

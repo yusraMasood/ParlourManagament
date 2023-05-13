@@ -161,6 +161,9 @@ export const authSlice = createSlice({
     setToken: (state, action) => {
       state.token = action.payload;
     },
+    removeToken: (state, action) => {
+      state.token = action.payload;
+    },
   },
   extraReducers: {
     [Login.fulfilled]: (state, action) => {
@@ -175,7 +178,7 @@ export const authSlice = createSlice({
     },
   },
 });
-export const {setToken} = authSlice.actions;
+export const {setToken, removeToken} = authSlice.actions;
 export default authSlice.reducer;
 export const useToken = () => {
   const token = useSelector(state => state.auth.token);

@@ -11,36 +11,32 @@ import {vh, vw} from '../../utils/dimensions';
 import styles from './styles';
 
 const routesWithBackIcon = {
-  ProductDetails:"ProductDetails",
-  OrderDetails:"OrderDetails",  
-  EditProfileScreen:"Edit Profile",
+  MapScreen: 'Salons',
+  ProductDetails: 'ProductDetails',
+  OrderDetails: 'OrderDetails',
+  EditProfileScreen: 'Edit Profile',
 };
 const routesWithMenu = {
-  MyProfileScreen:"My Profile",
-  TermsAndConditions:"Terms And Conditions",
-  PrivacyPolicy:"Privacy Policy",
-  HomeScreen:"Home",
-  MyOrders:"MyOrders",
-  ContactUs:"ContactUs"
-  
+  MyProfileScreen: 'My Profile',
+  TermsAndConditions: 'Terms And Conditions',
+  PrivacyPolicy: 'Privacy Policy',
+  HomeScreen: 'Home',
+  MyOrders: 'MyOrders',
+  ContactUs: 'ContactUs',
 };
 
-const routesWithNotification = {
-
-
-};
+const routesWithNotification = {};
 const titles = {
-  HomeScreen:"Home",
-  MapScreen: "Saloons",
-  ProductDetails:"Salon Detail",
-  MyOrders:"Booking",
-  OrderDetails:"Booking  Details",
-  EditProfileScreen:"Edit Profile",
-  MyProfileScreen:"My Profile",
-  TermsAndConditions:"Terms And Conditions",
-  PrivacyPolicy:"Privacy Policy",
-  ContactUs:"Contact Us"
-
+  HomeScreen: 'Home',
+  MapScreen: 'Salons',
+  ProductDetails: 'Salon Detail',
+  MyOrders: 'Booking',
+  OrderDetails: 'Booking  Details',
+  EditProfileScreen: 'Edit Profile',
+  MyProfileScreen: 'My Profile',
+  TermsAndConditions: 'Terms And Conditions',
+  PrivacyPolicy: 'Privacy Policy',
+  ContactUs: 'Contact Us',
 };
 
 const NavigationOptions = navProps => {
@@ -50,7 +46,7 @@ const NavigationOptions = navProps => {
     headerLeft: () => renderheaderLeft(navProps),
     headerBackground: () => renderHeaderBackground(navProps),
     headerTitleAlign: 'center',
-    
+
     headerLeftContainerStyle: {paddingLeft: 4 * vw},
     headerRightContainerStyle: {paddingRight: 4 * vw},
   };
@@ -66,9 +62,7 @@ const renderTitle = props => {
 };
 
 const renderHeaderBackground = props => {
-    return (
-   <View style={{flex:1,backgroundColor: "black"}}></View>
-    );
+  return <View style={{flex: 1, backgroundColor: 'black'}}></View>;
 };
 
 const renderheaderLeft = props => {
@@ -114,11 +108,9 @@ const renderheaderRight = props => {
 };
 
 export const drawerRoutes = {
-
   HomeStack: {
     label: 'Home',
   },
-
 
   ProfileStack: {
     label: 'My Profile',

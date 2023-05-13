@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   },
 
   dietTextProducts: {
-    color: colors.blackNew,
+    color: colors.white,
     paddingLeft: vw * 6,
 
     fontSize: vh * 2,
