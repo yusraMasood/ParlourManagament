@@ -28,7 +28,7 @@ const HomeScreen = props => {
 
   const handleDonePress = () => {
     // props.route.params.handleRoute(searchedAddress);
-    props.navigation.navigate('MapScreen');
+    props.navigation.navigate('SalonListScreen');
   };
   const animateToRegion = location => {
     mapRef.current.animateToRegion(

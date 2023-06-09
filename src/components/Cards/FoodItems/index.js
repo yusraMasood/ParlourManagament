@@ -10,19 +10,20 @@ import { useNavigation } from '@react-navigation/native';
 const FoodItems = (props) => {
   // console.log("props?.id",props);
   const navigation = useNavigation()
+  const {id, title, description} = props
   return (
 
     <View style={styles.veganOuterContainer}>
       <View style={styles.veganContainer}>
         <View>
-          <OutfitBold style={styles.veganText}>Zareena Beauty Parlour</OutfitBold>
-          <OutfitRegular style={styles.priceText}>View Services</OutfitRegular>
+          <OutfitBold style={styles.veganText}>{title}</OutfitBold>
+          <OutfitRegular style={styles.priceText} numberOfLines={2}>{description}</OutfitRegular>
           {/* <RippleHOC >
           <OutfitRegular style={styles.cartText}>Add To Cart</OutfitRegular>
           </RippleHOC> */}
         </View>
       </View>
-      <RippleHOC onPress={() => navigation.navigate('ProductDetails',{id: props.id})} style={styles.productImageContainer}>
+      <RippleHOC onPress={() => navigation.navigate('ProductDetails',{id})} style={styles.productImageContainer}>
         <Image source={props.image ? { uri: props.image } : generalImages.salon} style={styles.dietImage} />
       </RippleHOC>
 

@@ -2,16 +2,18 @@ import {useDispatch} from 'react-redux';
 import {getMessage, Toast} from '../../Api/APIHelpers';
 import {
   BookPhotographer,
+  GetGetSalonDetail,
   GetMyBookingDetail,
   GetMyBookings,
+  GetNearestSalons,
   PostReview,
 } from '../../state/bookPhotographer';
 import {toggleGlobalLoader, toggleInlineLoader} from '../../state/general';
 
 const useBooking = () => {
   const dispatch = useDispatch();
-  const bookPhotographer = async data => {
-    dispatch(toggleGlobalLoader(true));
+  const bookSalon = async data => {
+    // dispatch(toggleGlobalLoader(true));
     try {
       var bookData = {
         photographer_id: data?.id,
@@ -25,35 +27,35 @@ const useBooking = () => {
         amount: data?.charges.toString(),
       };
       const response = await dispatch(BookPhotographer(bookData)).unwrap();
-      dispatch(toggleGlobalLoader(false));
+      // dispatch(toggleGlobalLoader(false));
       return response;
     } catch (error) {
       console.log('bookdata', error);
-      dispatch(toggleGlobalLoader(false));
-      Toast.error(error);
-      throw new Error(error);
-    }
-  };
-  const getMyBookings = async data => {
-    dispatch(toggleInlineLoader(true));
-    try {
-      const response = await dispatch(GetMyBookings(data)).unwrap();
-      dispatch(toggleInlineLoader(false));
-      return response;
-    } catch (error) {
-      dispatch(toggleInlineLoader(false));
+      // dispatch(toggleGlobalLoader(false));
       Toast.error(error);
       // throw new Error(error);
     }
   };
-  const getMyBookingDetail = async id => {
-    dispatch(toggleGlobalLoader(true));
+  const getNearestSalons = async () => {
+    // dispatch(toggleInlineLoader(true));
     try {
-      const response = await dispatch(GetMyBookingDetail(id)).unwrap();
-      dispatch(toggleGlobalLoader(false));
+      const response = await dispatch(GetNearestSalons()).unwrap();
+      // dispatch(toggleInlineLoader(false));
       return response;
     } catch (error) {
-      dispatch(toggleGlobalLoader(false));
+      // dispatch(toggleInlineLoader(false));
+      Toast.error(error);
+      // throw new Error(error);
+    }
+  };
+  const getSalonDetail = async id => {
+    // dispatch(toggleGlobalLoader(true));
+    try {
+      const response = await dispatch(GetGetSalonDetail(id)).unwrap();
+      // dispatch(toggleGlobalLoader(false));
+      return response;
+    } catch (error) {
+      // dispatch(toggleGlobalLoader(false));
       Toast.error(error);
       // throw new Error(error);
     }
@@ -82,10 +84,10 @@ const useBooking = () => {
     }
   };
   return {
-    bookPhotographer,
-    getMyBookings,
-    getMyBookingDetail,
+    bookSalon,
     postReview,
+    getNearestSalons,
+    getSalonDetail,
   };
 };
 

@@ -4,18 +4,22 @@ import NavigationOptions from '../NavigationOptions';
 import HomeNavigator from '../HomeNavigator';
 import TabNavigator from '../TabNavigator';
 import DrawerNavigator from '../DrawerNavigator';
+import BookingScreen from '../../screens/Drawer/BookingScreen';
 
 const Stack = createStackNavigator();
 
 const MainNavigator = props => {
   return (
-    <Stack.Navigator screenOptions={{headerShown: false}}>
+    <Stack.Navigator screenOptions={NavigationOptions}>
       <Stack.Screen
         name="DrawerNavigator"
         component={DrawerNavigator}
         options={{headerShown: false}}
       />
-   
+      <Stack.Screen
+        name="BookingScreen"
+        component={BookingScreen}
+      />
     </Stack.Navigator>
   );
 };

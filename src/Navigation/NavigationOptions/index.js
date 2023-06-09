@@ -11,10 +11,11 @@ import {vh, vw} from '../../utils/dimensions';
 import styles from './styles';
 
 const routesWithBackIcon = {
-  MapScreen: 'Salons',
+  SalonListScreen: 'Salons',
   ProductDetails: 'ProductDetails',
   OrderDetails: 'OrderDetails',
   EditProfileScreen: 'Edit Profile',
+  BookingScreen: 'Book A Salon',
 };
 const routesWithMenu = {
   MyProfileScreen: 'My Profile',
@@ -28,7 +29,7 @@ const routesWithMenu = {
 const routesWithNotification = {};
 const titles = {
   HomeScreen: 'Home',
-  MapScreen: 'Salons',
+  SalonListScreen: 'Salons',
   ProductDetails: 'Salon Detail',
   MyOrders: 'Booking',
   OrderDetails: 'Booking  Details',
@@ -37,6 +38,7 @@ const titles = {
   TermsAndConditions: 'Terms And Conditions',
   PrivacyPolicy: 'Privacy Policy',
   ContactUs: 'Contact Us',
+  BookingScreen: 'Book A Salon',
 };
 
 const NavigationOptions = navProps => {

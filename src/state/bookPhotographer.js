@@ -3,13 +3,13 @@ import initial from './initial';
 import {get, post} from '../Api';
 import {endpoints} from '../Api/configs';
 import {Toast} from '../Api/APIHelpers';
-export const BookPhotographer = createAsyncThunk(
-  'bookPhotographer/bookphotographer',
+export const BookSalon = createAsyncThunk(
+  'book/bookSalon',
   async data => {
     console.log('data', data);
     try {
       let response;
-      await post(endpoints.book.bookPhotographer, data, true)
+      await post(endpoints.book.bookSalon, data, true)
         .then(res => {
           response = res;
         })
@@ -25,14 +25,14 @@ export const BookPhotographer = createAsyncThunk(
     }
   },
 );
-export const GetMyBookings = createAsyncThunk(
-  'auth/getmybookings',
+export const GetNearestSalons = createAsyncThunk(
+  'auth/getNearestSalons',
   async data => {
     try {
       let response;
-      await get(endpoints.book.myBookings, data)
+      await get(endpoints.book.nearest)
         .then(res => {
-          response = res.data;
+          response = res;
         })
         .catch(e => {
           throw new Error(e);
@@ -43,14 +43,14 @@ export const GetMyBookings = createAsyncThunk(
     }
   },
 );
-export const GetMyBookingDetail = createAsyncThunk(
-  'auth/getmybookingdetail',
+export const GetGetSalonDetail = createAsyncThunk(
+  'auth/getSalonDetail',
   async id => {
     try {
       let response;
-      await get(endpoints.book.myBookingDetail + id)
+      await get(endpoints.book.salonDetail + id)
         .then(res => {
-          response = res.data;
+          response = res;
         })
         .catch(e => {
           throw new Error(e);

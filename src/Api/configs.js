@@ -8,6 +8,9 @@ export const endpoints = {
     logout: '/v1/user/logout',
     register: '/user-register',
   },
+  salonListings: {
+    nearest: '/home',
+  },
   account: {
     profile: '/v1/user/profile',
     update: '/v1/user/update-profile',
@@ -55,10 +58,10 @@ export const endpoints = {
     acceptOffer: (id, status) => `/v1/adopts/${id}/${status}`,
   },
   book: {
-    bookPhotographer: '/v1/user/book-photographer',
-    myBookings: '/v1/user/my-bookings',
-    myBookingDetail: '/v1/user/bookings/',
+    bookSalon: '/',
     postReview: '/v1/user/add-review',
+    nearest: '/home',
+    salonDetail:'/salon/'
   },
   orders: {
     getOrders: '/v1/orders',

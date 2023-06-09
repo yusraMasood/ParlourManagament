@@ -4,7 +4,7 @@ import NavigationOptions from '../NavigationOptions';
 import HomeScreen from '../../screens/Drawer/Home/HomeScreen';
 import ProductDetails from '../../screens/Drawer/Home/ProductDetails';
 import MyOrders from '../../screens/Drawer/Orders/MyOrders';
-import MapScreen from '../../screens/Drawer/Home/MapScreen';
+import SalonListScreen from '../../screens/Drawer/Home/SalonListScreen';
 const HomeStack = createStackNavigator();
 
 const HomeNavigator = () => {
@@ -13,7 +13,7 @@ const HomeNavigator = () => {
       <HomeStack.Screen name="HomeScreen" component={HomeScreen}
       // options={{headerShown: false}}
       />
-      <HomeStack.Screen name="MapScreen" component={MapScreen}
+      <HomeStack.Screen name="SalonListScreen" component={SalonListScreen}
       // options={{headerShown: false}}
       />
       <HomeStack.Screen name="ProductDetails" component={ProductDetails}
