@@ -5,6 +5,7 @@ import HomeNavigator from '../HomeNavigator';
 import TabNavigator from '../TabNavigator';
 import DrawerNavigator from '../DrawerNavigator';
 import BookingScreen from '../../screens/Drawer/BookingScreen';
+import HomeScreen from '../../screens/Drawer/Home/HomeScreen';
 
 const Stack = createStackNavigator();
 
@@ -17,9 +18,11 @@ const MainNavigator = props => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="BookingScreen"
-        component={BookingScreen}
+        name="HomeScreen"
+        component={HomeScreen}
+        // options={{headerShown: false}}
       />
+      <Stack.Screen name="BookingScreen" component={BookingScreen} />
     </Stack.Navigator>
   );
 };

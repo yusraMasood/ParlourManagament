@@ -133,5 +133,11 @@ const styles = StyleSheet.create({
   //     marginLeft: vw * 5,
   //     // backgroundColor: "red"
   // },
+  locationIconStyle: {
+    width: vw * 6,
+    height: vw * 6,
+    tintColor: colors.white,
+    resizeMode: 'contain',
+  },
 });
 export default styles;

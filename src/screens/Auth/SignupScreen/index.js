@@ -40,8 +40,8 @@ const SignupScreen = props => {
       confirmPassword,
     };
     registerUser(data).then(res => {
+      // console.log('res', res);
       if (res?.status) {
-        // console.log('res', res);
         props.navigation.navigate('LoginScreen');
       }
     });

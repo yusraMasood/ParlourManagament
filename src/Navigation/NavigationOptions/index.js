@@ -11,24 +11,31 @@ import {vh, vw} from '../../utils/dimensions';
 import styles from './styles';
 
 const routesWithBackIcon = {
-  SalonListScreen: 'Salons',
+  HomeScreen: 'Location',
+  // SalonListScreen: 'Salons',
   ProductDetails: 'ProductDetails',
   OrderDetails: 'OrderDetails',
   EditProfileScreen: 'Edit Profile',
   BookingScreen: 'Book A Salon',
 };
 const routesWithMenu = {
+  SalonListScreen: 'Salons',
   MyProfileScreen: 'My Profile',
   TermsAndConditions: 'Terms And Conditions',
   PrivacyPolicy: 'Privacy Policy',
-  HomeScreen: 'Home',
+  // HomeScreen: 'Home',
   MyOrders: 'MyOrders',
   ContactUs: 'ContactUs',
 };
 
 const routesWithNotification = {};
+
+const routesWithLocation = {
+  SalonListScreen: 'Salons',
+};
+
 const titles = {
-  HomeScreen: 'Home',
+  HomeScreen: 'Location',
   SalonListScreen: 'Salons',
   ProductDetails: 'Salon Detail',
   MyOrders: 'Booking',
@@ -105,6 +112,13 @@ const renderheaderRight = props => {
           <Image source={icons.notification} style={styles.bellIcon} />
         </RippleHOC>
       </View>
+    );
+  }
+  if (routesWithLocation[props?.route?.name]) {
+    return (
+      <RippleHOC onPress={() => props.navigation.navigate('HomeScreen')}>
+        <Image source={icons.locationIcon} style={styles.locationIconStyle} />
+      </RippleHOC>
     );
   }
 };
