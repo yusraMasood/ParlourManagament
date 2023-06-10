@@ -6,9 +6,13 @@ import OutfitMedium from '../../../../components/Texts/OutfitMedium';
 import OutfitRegular from '../../../../components/Texts/OutfitRegular';
 import ContentContainer from '../../../../components/wrappers/ContentContainer';
 import ScreenWrapper from '../../../../components/wrappers/ScreenWrapper';
-import {linearColors} from '../../../../utils/appTheme';
+import {colors, linearColors} from '../../../../utils/appTheme';
 import styles from './styles';
 import useBooking from '../../../../Hooks/useBooking';
+import OutfitSemiBold from '../../../../components/Texts/OutfitSemiBold';
+import {vh, vw} from '../../../../utils/dimensions';
+import moment from 'moment';
+import {Rating} from 'react-native-ratings';
 
 const ProductDetails = props => {
   const id = props?.route?.params?.id;
@@ -97,6 +101,61 @@ const ProductDetails = props => {
             // buttonStyle={styles.buttonStyle}
             // textStyle={styles.btnText}
           />
+        </View>
+        <OutfitSemiBold style={styles.reviewTextStyle}>Review</OutfitSemiBold>
+        <View style={{paddingHorizontal: vw * 3}}>
+          {responseData?.reviews?.map(item => {
+            return (
+              <View
+                style={{
+                  backgroundColor: 'rgba(255,255,255,0.2)',
+                  padding: vw * 3,
+                  borderRadius: vw * 3,
+                  marginVertical: vh * 1,
+                }}>
+                <View
+                  style={{
+                    flexDirection: 'row',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                  }}>
+                  <OutfitMedium
+                    style={{color: colors.white, fontSize: vh * 2.1}}>
+                    {item?.user[0]?.name}
+                  </OutfitMedium>
+                  <Rating
+                    type="custom"
+                    ratingImage={icons.star}
+                    ratingColor="transparent"
+                    ratingBackgroundColor="transparent"
+                    ratingCount={item?.rating}
+                    imageSize={15}
+                    readonly
+                    onFinishRating={this.ratingCompleted}
+                    // style={{paddingVertical: 10}}
+                  />
+                </View>
+                <OutfitRegular
+                  style={{
+                    color: colors.white,
+                    fontSize: vh * 1.7,
+                    marginTop: vh * 1,
+                  }}>
+                  {item?.comment}
+                </OutfitRegular>
+                <View style={{alignItems: 'flex-end'}}>
+                  <OutfitRegular
+                    style={{
+                      color: colors.white,
+                      fontSize: vh * 1.7,
+                      marginTop: vh * 1,
+                    }}>
+                    {moment(item?.createdAt).format('LL')}
+                  </OutfitRegular>
+                </View>
+              </View>
+            );
+          })}
         </View>
       </ContentContainer>
     </ScreenWrapper>

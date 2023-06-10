@@ -58,6 +58,7 @@ export const generalImages = {
     camera: require('./icons/camera.png'),
     eye: require('./icons/eye.png'),
     locationIcon: require('./icons/locationIcon.png'),
+    star: require('./icons/star.png'),
     // search: require('./icons/search.png'),
     // calendarIcon: require('./icons/calendarIcon.png'),
     // clock: require('./icons/clock.png'),

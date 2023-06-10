@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { color } from 'react-native-reanimated';
-import { colors } from '../../../../utils/appTheme';
-import { vh, vw } from '../../../../utils/dimensions';
+import {StyleSheet} from 'react-native';
+import {color} from 'react-native-reanimated';
+import {colors} from '../../../../utils/appTheme';
+import {vh, vw} from '../../../../utils/dimensions';
 
 const styles = StyleSheet.create({
   foodImage: {
@@ -11,24 +11,24 @@ const styles = StyleSheet.create({
     width: vw * 90,
     marginLeft: vw * 2,
     alignItems: 'flex-end',
-    marginLeft: vw*3,
+    marginLeft: vw * 3,
     // padding: vh*2,
     paddingTop: vh * 0.5,
   },
-  centerContent:{
+  centerContent: {
     // alignItems: "center",
-    marginLeft: vw*3,
-
+    marginLeft: vw * 3,
   },
   container: {
     // paddingHorizontal: vw * 3,
-    paddingTop: vh * 4
+    paddingTop: vh * 4,
   },
   productImages: {
-    flex: 1, flexGrow: 0
+    flex: 1,
+    flexGrow: 0,
   },
-  freeColor: { backgroundColor: colors.SpiritstoneRed },
-  premiumColor: { backgroundColor: colors.yellow },
+  freeColor: {backgroundColor: colors.SpiritstoneRed},
+  premiumColor: {backgroundColor: colors.yellow},
   freeBtn: {
     // paddingVertical: vh*1,
     // height: vh*3,
@@ -36,18 +36,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: vw * 2,
     paddingVertical: vh * 0.6,
     borderRadius: vw * 2,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     // paddingHorizontal: vw*2,
     // backgroundColor: colors.black
   },
   tagText: {
     color: colors.white,
-    fontSize: vh * 1.55
+    fontSize: vh * 1.55,
   },
   containerMain: {},
   scroll: {
-    
+    paddingBottom: vw * 8,
   },
   imgBorder: {
     borderRadius: vh * 4,
@@ -61,15 +61,14 @@ const styles = StyleSheet.create({
   dietImages: {
     height: vh * 18,
     paddingHorizontal: vw * 2,
-    alignItems: "flex-start",
+    alignItems: 'flex-start',
     paddingTop: vh * 1,
     marginTop: vh * 2,
     width: vw * 60,
     marginLeft: vw * 3,
-    marginRight: vw*1,
+    marginRight: vw * 1,
     resizeMode: 'cover',
-    marginLeft: vw*3,
-
+    marginLeft: vw * 3,
   },
   buttonStyle: {
     borderWidth: 1.3,
@@ -78,8 +77,7 @@ const styles = StyleSheet.create({
     borderRadius: vh * 1.5,
   },
   btnView: {
-    height: vh * 5.8
-
+    height: vh * 5.8,
   },
   btnText: {
     color: colors.borderBtn,
@@ -89,21 +87,18 @@ const styles = StyleSheet.create({
   ContentContainer: {
     alignItems: 'center',
     paddingTop: vh * 2,
-    paddingBottom: vh * 8,
   },
   countCartContainer: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    width: vw*95,
-    marginHorizontal: vw*3,
-
+    width: vw * 95,
+    marginHorizontal: vw * 3,
   },
   paraText: {
     fontSize: vh * 1.7,
     paddingTop: vh * 1,
-    color: colors.white
-
+    color: colors.white,
   },
   circleOuterContainer: {
     backgroundColor: 'rgba(255,255,255,0.1)',
@@ -119,8 +114,7 @@ const styles = StyleSheet.create({
     fontSize: vh * 2.1,
     // alignSelf: "center",
     // marginLeft: vw*3,
-    width: vw*95,
-
+    width: vw * 95,
   },
   circleInnerContainer: {
     backgroundColor: colors.white,
@@ -129,6 +123,11 @@ const styles = StyleSheet.create({
     width: vw * 12,
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  reviewTextStyle: {
+    color: colors.white,
+    fontSize: vh * 2.3,
+    marginLeft: vw * 3,
   },
 });
 export default styles;
