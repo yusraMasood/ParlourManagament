@@ -11,19 +11,18 @@ import {vh, vw} from '../../utils/dimensions';
 import styles from './styles';
 
 const routesWithBackIcon = {
-  HomeScreen: 'Location',
-  // SalonListScreen: 'Salons',
+  MapScreen: 'Location',
+  SalonListScreen: 'Salons',
   ProductDetails: 'ProductDetails',
   OrderDetails: 'OrderDetails',
   EditProfileScreen: 'Edit Profile',
   BookingScreen: 'Book A Salon',
 };
 const routesWithMenu = {
-  SalonListScreen: 'Salons',
+  HomeScreen: 'Home',
   MyProfileScreen: 'My Profile',
   TermsAndConditions: 'Terms And Conditions',
   PrivacyPolicy: 'Privacy Policy',
-  // HomeScreen: 'Home',
   MyOrders: 'MyOrders',
   ContactUs: 'ContactUs',
 };
@@ -31,11 +30,12 @@ const routesWithMenu = {
 const routesWithNotification = {};
 
 const routesWithLocation = {
-  SalonListScreen: 'Salons',
+  HomeScreen: 'Home',
 };
 
 const titles = {
-  HomeScreen: 'Location',
+  HomeScreen: 'Home',
+  MapScreen: 'Location',
   SalonListScreen: 'Salons',
   ProductDetails: 'Salon Detail',
   MyOrders: 'Booking',
@@ -71,7 +71,7 @@ const renderTitle = props => {
 };
 
 const renderHeaderBackground = props => {
-  return <View style={{flex: 1, backgroundColor: 'black'}}></View>;
+  return <View style={{flex: 1, backgroundColor: 'rgba(0,0,0,0.9)'}}></View>;
 };
 
 const renderheaderLeft = props => {
@@ -116,7 +116,7 @@ const renderheaderRight = props => {
   }
   if (routesWithLocation[props?.route?.name]) {
     return (
-      <RippleHOC onPress={() => props.navigation.navigate('HomeScreen')}>
+      <RippleHOC onPress={() => props.navigation.navigate('MapScreen')}>
         <Image source={icons.locationIcon} style={styles.locationIconStyle} />
       </RippleHOC>
     );

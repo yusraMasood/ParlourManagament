@@ -11,15 +11,15 @@ const HomeNavigator = () => {
   return (
     <HomeStack.Navigator screenOptions={NavigationOptions}>
       <HomeStack.Screen
+        name="HomeScreen"
+        component={HomeScreen}
+        // options={{headerShown: false}}
+      />
+      <HomeStack.Screen
         name="SalonListScreen"
         component={SalonListScreen}
         // options={{headerShown: false}}
       />
-      {/* <HomeStack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
-        // options={{headerShown: false}}
-      /> */}
       <HomeStack.Screen
         name="ProductDetails"
         component={ProductDetails}

@@ -4,7 +4,7 @@ import {vh, vw} from '../../utils/dimensions';
 
 const styles = StyleSheet.create({
   container: {
-    width: vw * 100,
+    width: '100%',
     height: vh * 8,
     position: 'absolute',
     bottom: 0,
@@ -13,7 +13,7 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     // borderTopLeftRadius: vh * 3,
     // borderTopRightRadius: vh * 3,
-    backgroundColor: colors.black,
+    backgroundColor: 'rgba(0,0,0,0.9)',
     ...themeShadow,
   },
   screenFocus: {
@@ -67,4 +67,3 @@ const styles = StyleSheet.create({
 });
 
 export default styles;
-

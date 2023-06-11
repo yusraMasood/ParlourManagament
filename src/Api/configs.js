@@ -1,5 +1,5 @@
 export const urls = {
-  v1: `https://geoff-backend-production-553f.up.railway.app/user/api`, //dev
+  v1: `https://geoff-backend-production-c1d4.up.railway.app/user/api`, //dev
 };
 export const base_url = urls.v1;
 export const endpoints = {
@@ -12,7 +12,7 @@ export const endpoints = {
     nearest: '/home',
   },
   account: {
-    profile: '/v1/user/profile',
+    profile: '/account',
     update: '/v1/user/update-profile',
     changePassword: '/v1/user/change-password',
   },
@@ -61,7 +61,9 @@ export const endpoints = {
     bookSalon: '/',
     postReview: '/v1/user/add-review',
     nearest: '/home',
-    salonDetail:'/salon/'
+    services: '/services',
+    salonDetail: '/salon/',
+    booking: '/appointments',
   },
   orders: {
     getOrders: '/v1/orders',

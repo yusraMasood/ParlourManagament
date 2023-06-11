@@ -3,7 +3,7 @@ import {combineReducers, configureStore} from '@reduxjs/toolkit';
 import {persistStore} from 'redux-persist';
 import persistReducer from 'redux-persist/es/persistReducer';
 import thunk from 'redux-thunk';
-// import account from './account';
+import account from './account';
 import auth from './auth';
 // import cart from './cart';
 import general from './general';
@@ -17,7 +17,7 @@ const persistedConfig = {
 const reducers = combineReducers({
   general: general,
   auth: auth,
-  // account: account,
+  account: account,
   // categories: categories,
   // miscellaneous: miscellaneous,
   // cart: cart,

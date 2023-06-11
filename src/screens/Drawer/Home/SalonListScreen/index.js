@@ -1,23 +1,15 @@
-import React, {useState, useLayoutEffect, useEffect, useRef} from 'react';
-import {
-  View,
-  Image,
-  FlatList,
-  TouchableOpacity,
-  ScrollView,
-  RefreshControl,
-  StyleSheet,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, FlatList} from 'react-native';
 import OutfitMedium from '../../../../components/Texts/OutfitMedium';
 import styles from './styles';
-import OutfitRegular from '../../../../components/Texts/OutfitRegular';
 import ScreenWrapper from '../../../../components/wrappers/ScreenWrapper';
-import {icons} from '../../../../assets/images';
-import RippleHOC from '../../../../components/wrappers/Ripple';
-import FoodItems from '../../../../components/Cards/FoodItems';
+import {generalImages} from '../../../../assets/images';
 import useBooking from '../../../../Hooks/useBooking';
+import SalonCard from '../../../../components/Cards/SalonCard';
 
 const SalonListScreen = props => {
+  const serviceId = props?.route?.params?.serviceId;
+
   const {getNearestSalons} = useBooking();
 
   const [refreshing, setRefreshing] = useState(false);
@@ -40,6 +32,7 @@ const SalonListScreen = props => {
         // const data = {
         //   page: currentPage,
         //   per_page: 10,
+        //   service: serviceId,
         // };
         const response = await getNearestSalons();
         console.log('response', response);
@@ -77,19 +70,19 @@ const SalonListScreen = props => {
   const renderFoodItems = ({item}) => {
     // console.log("props",props);
     return (
-      // <RippleHOC onPress={() => props.navigation.navigate('ProductDetails')}>
-      <FoodItems
+      <SalonCard
         id={item?._id}
         title={item?.title}
         description={item?.description}
-        // image={props?.item?.media[0]?.image_url}
+        image={generalImages.defaultImage}
+        // image={item?.image ? item?.image : generalImages.noImage}
+        rating={item?.averageRating}
       />
-      // </RippleHOC>
     );
   };
 
   const renderHeader = (
-    <View style={styles.dietContainer}>
+    <View>
       <OutfitMedium style={styles.dietTextProducts}>
         Nearest Salons
       </OutfitMedium>

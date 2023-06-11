@@ -115,7 +115,7 @@ export const accountSlice = createSlice({
   extraReducers: {
     [GetProfile.fulfilled]: (state, action) => {
       const {payload} = action;
-      state.profile = payload;
+      state.profile = payload?.detail;
     },
   },
 });

@@ -14,12 +14,11 @@ const styles = StyleSheet.create({
   },
   footer: {
     paddingBottom: vh * 10,
+    paddingHorizontal: vw * 3,
   },
 
   dietTextProducts: {
     color: colors.white,
-    paddingLeft: vw * 6,
-
     fontSize: vh * 2,
   },
 });

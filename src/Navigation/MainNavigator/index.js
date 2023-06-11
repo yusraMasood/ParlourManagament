@@ -6,10 +6,18 @@ import TabNavigator from '../TabNavigator';
 import DrawerNavigator from '../DrawerNavigator';
 import BookingScreen from '../../screens/Drawer/BookingScreen';
 import HomeScreen from '../../screens/Drawer/Home/HomeScreen';
+import MapScreen from '../../screens/Drawer/Home/MapScreen';
+import useProfile from '../../Hooks/useProfile';
 
 const Stack = createStackNavigator();
 
 const MainNavigator = props => {
+  const {getProfile} = useProfile();
+  
+  useEffect(() => {
+    getProfile();
+  }, []);
+
   return (
     <Stack.Navigator screenOptions={NavigationOptions}>
       <Stack.Screen
@@ -18,8 +26,8 @@ const MainNavigator = props => {
         options={{headerShown: false}}
       />
       <Stack.Screen
-        name="HomeScreen"
-        component={HomeScreen}
+        name="MapScreen"
+        component={MapScreen}
         // options={{headerShown: false}}
       />
       <Stack.Screen name="BookingScreen" component={BookingScreen} />

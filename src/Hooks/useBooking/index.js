@@ -3,9 +3,11 @@ import {getMessage, Toast} from '../../Api/APIHelpers';
 import {
   BookPhotographer,
   GetGetSalonDetail,
+  GetMyBooking,
   GetMyBookingDetail,
   GetMyBookings,
   GetNearestSalons,
+  GetServices,
   PostReview,
 } from '../../state/bookPhotographer';
 import {toggleGlobalLoader, toggleInlineLoader} from '../../state/general';
@@ -36,10 +38,34 @@ const useBooking = () => {
       // throw new Error(error);
     }
   };
-  const getNearestSalons = async () => {
+  const getMyBooking = async () => {
     // dispatch(toggleInlineLoader(true));
     try {
-      const response = await dispatch(GetNearestSalons()).unwrap();
+      const response = await dispatch(GetMyBooking()).unwrap();
+      // dispatch(toggleInlineLoader(false));
+      return response;
+    } catch (error) {
+      // dispatch(toggleInlineLoader(false));
+      Toast.error(error);
+      // throw new Error(error);
+    }
+  };
+  const getServices = async () => {
+    // dispatch(toggleInlineLoader(true));
+    try {
+      const response = await dispatch(GetServices()).unwrap();
+      // dispatch(toggleInlineLoader(false));
+      return response;
+    } catch (error) {
+      // dispatch(toggleInlineLoader(false));
+      Toast.error(error);
+      // throw new Error(error);
+    }
+  };
+  const getNearestSalons = async (data) => {
+    // dispatch(toggleInlineLoader(true));
+    try {
+      const response = await dispatch(GetNearestSalons(data)).unwrap();
       // dispatch(toggleInlineLoader(false));
       return response;
     } catch (error) {
@@ -86,8 +112,10 @@ const useBooking = () => {
   return {
     bookSalon,
     postReview,
+    getServices,
     getNearestSalons,
     getSalonDetail,
+    getMyBooking,
   };
 };
 

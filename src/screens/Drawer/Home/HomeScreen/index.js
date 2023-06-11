@@ -1,116 +1,149 @@
-import React, {useState, useEffect, useRef} from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {View, FlatList, TouchableOpacity} from 'react-native';
+import OutfitMedium from '../../../../components/Texts/OutfitMedium';
 import styles from './styles';
-import {icons} from '../../../../assets/images';
-import MapView, {Marker} from 'react-native-maps';
-import {
-  LATITUDE_DELTA,
-  LONGITUDE_DELTA,
-  checkLocationPermissions,
-  getCurrentLocation,
-} from '../../../../utils/helperFunctions';
-import CustomButton from '../../../../components/Buttons/CustomButton';
+import OutfitRegular from '../../../../components/Texts/OutfitRegular';
+import ScreenWrapper from '../../../../components/wrappers/ScreenWrapper';
+import {generalImages} from '../../../../assets/images';
+import useBooking from '../../../../Hooks/useBooking';
+import useProfile from '../../../../Hooks/useProfile';
+import OutfitSemiBold from '../../../../components/Texts/OutfitSemiBold';
+import {vh} from '../../../../utils/dimensions';
+import SalonCard from '../../../../components/Cards/SalonCard';
 
 const HomeScreen = props => {
-  const mapRef = useRef();
+  const {getNearestSalons, getServices} = useBooking();
+  const {profile} = useProfile();
 
-  const [initialRegion] = useState({
-    latitude: 37.78825,
-    longitude: -122.4324,
-    latitudeDelta: 0.0922,
-    longitudeDelta: 0.0421,
-  });
-  const [userLocation, setUserLocation] = useState(null);
+  // console.log('profile', profile);
 
-  const handleDonePress = () => {
-    // props.route.params.handleRoute(searchedAddress);
-    props.navigation.navigate('SalonListScreen');
+  const [refreshing, setRefreshing] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [responseData, setResponseData] = useState(null);
+  const [services, setServices] = useState([]);
+
+  const handleServicePress = item => {
+    props.navigation?.navigate('SalonListScreen', {
+      serviceId: item?.serviceType,
+    });
   };
-  const animateToRegion = location => {
-    mapRef.current.animateToRegion(
-      {
-        latitude: location?.latitude,
-        longitude: location?.longitude,
-        latitudeDelta: LATITUDE_DELTA,
-        longitudeDelta: LONGITUDE_DELTA,
-      },
-      2000,
+
+  const getSalonServices = () => {
+    getServices().then(res => {
+      setServices(res?.detail);
+    });
+  };
+
+  // const handleOnEndReached = () => {
+  //   getData();
+  // };
+
+  const handleOnRefresh = () => {
+    // setCurrentPage(1);
+    setRefreshing(true);
+  };
+
+  const getData = async () => {
+    if (!isLoading) {
+      setIsLoading(true);
+      try {
+        // const data = {
+        //   page: currentPage,
+        //   per_page: 10,
+        // };
+        const response = await getNearestSalons();
+        console.log('response', response);
+        setResponseData(response?.detail);
+        // if (response?.current_page === 1) {
+        //   setFavPhotographer(response?.data);
+        // } else {
+        //   setFavPhotographer(prev => prev.concat(response?.data));
+        // }
+        // if (response?.data?.length) {
+        //   setCurrentPage(response?.current_page + 1);
+        // } else {
+        //   setCurrentPage(null);
+        // }
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  };
+
+  useEffect(() => {
+    // if (currentPage === 1) {
+    //   getData();
+    // }
+    if (refreshing) {
+      getData();
+      setRefreshing(false);
+    }
+  }, [refreshing]);
+
+  useEffect(() => {
+    getData();
+    getSalonServices();
+  }, []);
+
+  const renderFoodItems = ({item}) => {
+    // console.log("props",props);
+    return (
+      <SalonCard
+        id={item?._id}
+        title={item?.title}
+        description={item?.description}
+        image={generalImages.defaultImage}
+        // image={item?.image ? item?.image : generalImages.noImage}
+        rating={item?.averageRating}
+      />
     );
   };
-  const onMarkerDragEnd = async event => {
-    const coordinate = {
-      latitude: event?.nativeEvent?.coordinate?.latitude,
-      longitude: event?.nativeEvent?.coordinate?.longitude,
-    };
-    try {
-      setUserLocation({
-        location: {
-          latitude: parseFloat(coordinate?.latitude),
-          longitude: parseFloat(coordinate?.longitude),
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
-        },
-      });
-      animateToRegion(coordinate);
-    } catch (e) {
-      // console.log(e);
-      // showToast(e);
-    }
-  };
-  const getUserLocation = async () => {
-    try {
-      const location = await getCurrentLocation();
-      console.log('CURRENT LOCATION', location);
 
-      setUserLocation({
-        location: {
-          latitude: parseFloat(location?.latitude),
-          longitude: parseFloat(location?.longitude),
-          latitudeDelta: LATITUDE_DELTA,
-          longitudeDelta: LONGITUDE_DELTA,
-        },
-      });
-      animateToRegion(location);
-    } catch (error) {
-      // showToast(error);
-    }
+  const renderServices = ({item}) => {
+    return (
+      <TouchableOpacity
+        style={styles.servicesCard}
+        activeOpacity={0.99}
+        onPress={() => handleServicePress(item)}>
+        <OutfitRegular style={styles.serviceNameText}>
+          {item?.service_name}
+        </OutfitRegular>
+      </TouchableOpacity>
+    );
   };
-  const setupMethods = async () => {
-    try {
-      await checkLocationPermissions();
-      getUserLocation();
-    } catch (error) {
-      console.log('location** error ', error);
-    }
-  };
-  useEffect(() => {
-    setupMethods();
-  }, []);
-  return (
-    <View
-      style={{
-        flex: 1,
-        alignItems: 'center',
-      }}>
-      <MapView
-        ref={mapRef}
-        initialRegion={initialRegion}
-        style={[StyleSheet.absoluteFillObject]}>
-        {userLocation && (
-          <Marker
-            coordinate={userLocation?.location}
-            draggable={true}
-            onDragEnd={onMarkerDragEnd}>
-            <Image source={icons.locationIcon} style={styles.markerIconStyle} />
-          </Marker>
-        )}
-      </MapView>
-      <CustomButton style={styles.btn} text="Done" onPress={handleDonePress} />
+
+  const renderHeader = (
+    <View style={styles.dietContainer}>
+      <OutfitSemiBold style={styles.nameText}>
+        Hello {profile?.name},
+      </OutfitSemiBold>
+      <OutfitMedium style={styles.dietTextProducts}>Top Services</OutfitMedium>
+      <FlatList
+        data={services}
+        renderItem={renderServices}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        contentContainerStyle={{marginTop: vh * 1}}
+      />
+      <OutfitMedium style={styles.dietTextProducts}>
+        Top Nearby Salons
+      </OutfitMedium>
     </View>
+  );
+
+  return (
+    <ScreenWrapper style={styles.containerMain}>
+      <FlatList
+        data={responseData}
+        renderItem={renderFoodItems}
+        ListHeaderComponent={renderHeader}
+        contentContainerStyle={styles.footer}
+        refreshing={refreshing}
+        onRefresh={handleOnRefresh}
+        showsVerticalScrollIndicator={false}
+        // ListFooterComponent={() => <View style={styles.footer} />}
+      />
+    </ScreenWrapper>
   );
 };
 export default HomeScreen;
