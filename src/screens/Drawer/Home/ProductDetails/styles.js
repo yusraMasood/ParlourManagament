@@ -9,18 +9,11 @@ const styles = StyleSheet.create({
     marginTop: vh * 2,
     resizeMode: 'cover',
     width: vw * 90,
-    marginLeft: vw * 2,
     alignItems: 'flex-end',
-    marginLeft: vw * 3,
-    // padding: vh*2,
+    marginRight: vw * 3,
     paddingTop: vh * 0.5,
   },
-  centerContent: {
-    // alignItems: "center",
-    marginLeft: vw * 3,
-  },
   container: {
-    // paddingHorizontal: vw * 3,
     paddingTop: vh * 4,
   },
   productImages: {
@@ -48,6 +41,7 @@ const styles = StyleSheet.create({
   containerMain: {},
   scroll: {
     paddingBottom: vw * 8,
+    paddingHorizontal: vw * 3,
   },
   imgBorder: {
     borderRadius: vh * 4,
@@ -86,7 +80,7 @@ const styles = StyleSheet.create({
   },
   ContentContainer: {
     alignItems: 'center',
-    paddingTop: vh * 2,
+    marginTop: vh * 3,
   },
   countCartContainer: {
     flexDirection: 'row',
@@ -97,7 +91,7 @@ const styles = StyleSheet.create({
   },
   paraText: {
     fontSize: vh * 1.7,
-    paddingTop: vh * 1,
+    marginTop: vh * 1,
     color: colors.white,
   },
   circleOuterContainer: {
@@ -110,11 +104,7 @@ const styles = StyleSheet.create({
   },
   veganHeadText: {
     color: colors.white,
-    paddingTop: vh * 1.8,
     fontSize: vh * 2.1,
-    // alignSelf: "center",
-    // marginLeft: vw*3,
-    width: vw * 95,
   },
   circleInnerContainer: {
     backgroundColor: colors.white,
@@ -127,7 +117,19 @@ const styles = StyleSheet.create({
   reviewTextStyle: {
     color: colors.white,
     fontSize: vh * 2.3,
-    marginLeft: vw * 3,
+    marginTop: vh * 3,
+  },
+  headerContainer: {
+    marginTop: vh * 2,
+    flexDirection: 'row',
+    alignItems: 'flex-start',
+    justifyContent: 'space-between',
+  },
+  serviceBtnContainer: {marginRight: vw * 2},
+  textBtnStyle: {
+    color: colors.white,
+    fontSize: vh * 1.5,
+    textDecorationLine: 'underline',
   },
 });
 export default styles;

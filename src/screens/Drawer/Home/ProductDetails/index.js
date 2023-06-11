@@ -1,5 +1,12 @@
 import React, {useEffect, useState} from 'react';
-import {View, Image, ImageBackground, FlatList, ScrollView} from 'react-native';
+import {
+  View,
+  Image,
+  ImageBackground,
+  FlatList,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {generalImages, icons} from '../../../../assets/images';
 import CustomButton from '../../../../components/Buttons/CustomButton';
 import OutfitMedium from '../../../../components/Texts/OutfitMedium';
@@ -56,10 +63,10 @@ const ProductDetails = props => {
         imageStyle={styles.imgBorder}></ImageBackground>
     );
   };
-  console.log('productDetail', responseData);
+  // console.log('productDetail', responseData);
   return (
     <ScreenWrapper>
-      <ContentContainer style={styles.scroll}>
+      <ContentContainer contentContainerStyle={styles.scroll}>
         <View style={styles.productImages}>
           <FlatList
             data={[1, 2, 3]}
@@ -68,15 +75,30 @@ const ProductDetails = props => {
             showsHorizontalScrollIndicator={false}
           />
         </View>
-        <View style={styles.centerContent}>
-          <OutfitMedium style={styles.veganHeadText}>
-            {responseData?.title}
-          </OutfitMedium>
-          <OutfitRegular style={styles.paraText}>
-            {responseData?.description}
-          </OutfitRegular>
+        <View style={styles.headerContainer}>
+          <View style={{flex: 1}}>
+            <OutfitMedium style={styles.veganHeadText}>
+              {responseData?.title}
+            </OutfitMedium>
+          </View>
+          <TouchableOpacity style={styles.serviceBtnContainer}>
+            <OutfitRegular style={styles.textBtnStyle}>
+              View Services
+            </OutfitRegular>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <OutfitRegular style={styles.textBtnStyle}>
+              Get Location
+            </OutfitRegular>
+          </TouchableOpacity>
         </View>
-        <View style={styles.centerContent}>
+        <OutfitSemiBold style={styles.reviewTextStyle}>
+          Description
+        </OutfitSemiBold>
+        <OutfitRegular style={styles.paraText}>
+          {responseData?.description}
+        </OutfitRegular>
+        {/* <View style={styles.centerContent}>
           <OutfitMedium style={styles.veganHeadText}>Services :</OutfitMedium>
           {responseData?.services?.map(item => {
             return (
@@ -85,25 +107,19 @@ const ProductDetails = props => {
               </OutfitRegular>
             );
           })}
-          {/* <OutfitRegular style={styles.paraText}>
-            Menicure 500{'\n'}
-            Pedicure 500{'\n'}
-            waxing 500{'\n'}
-          </OutfitRegular> */}
-        </View>
+        </View> */}
 
         <View style={styles.ContentContainer}>
           <CustomButton
             text="Book Salon"
             style={styles.btnView}
             onPress={handleBookPress}
-            // linearColors={linearColors.white}
-            // buttonStyle={styles.buttonStyle}
-            // textStyle={styles.btnText}
           />
         </View>
-        <OutfitSemiBold style={styles.reviewTextStyle}>Review</OutfitSemiBold>
-        <View style={{paddingHorizontal: vw * 3}}>
+        <OutfitSemiBold style={styles.reviewTextStyle}>
+          Rating & Reviews
+        </OutfitSemiBold>
+        <View style={{}}>
           {responseData?.reviews?.map(item => {
             return (
               <View
