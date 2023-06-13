@@ -23,6 +23,7 @@ const styles = StyleSheet.create({
     height: vh * 2.5,
     width: vh * 2.5,
     resizeMode: 'contain',
+    tintColor: colors.borderColor
     // backgroundColor: 'red',
   },
   icon2: {

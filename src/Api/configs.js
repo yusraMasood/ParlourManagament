@@ -59,7 +59,7 @@ export const endpoints = {
   },
   book: {
     bookSalon: '/book-service',
-    postReview: '/v1/user/add-review',
+    postReview: '/v1/user/rating/',
     nearest: '/home',
     services: '/service-type',
     salonDetail: '/salon/',

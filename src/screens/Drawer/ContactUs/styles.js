@@ -3,13 +3,14 @@ import {vh, vw} from '../../../utils/dimensions';
 
 const styles = StyleSheet.create({
   container: {
-    alignItems: 'center',
+    // alignItems: 'center',
     paddingTop: vh * 8,
   },
   textinputContainer: {
     width: vw * 85,
   },
   buttonView: {
+    alignItems: 'center',
     marginTop: vh * 5,
     // flex:1,
     // justifyContent: "flex-end",

@@ -93,19 +93,10 @@ export const GetGetSalonDetail = createAsyncThunk(
 );
 export const PostReview = createAsyncThunk(
   'bookPhotographer/postreview',
-  async ({bookingid, id, rating, review}) => {
+  async ({id, rating, comment}) => {
     try {
       let response;
-      await post(
-        endpoints.book.postReview,
-        {
-          booking_id: bookingid,
-          photographer_id: id,
-          stars: rating,
-          description: review,
-        },
-        true,
-      )
+      await post(endpoints.book.postReview + id, {rating, comment}, false)
         .then(res => {
           response = res;
         })

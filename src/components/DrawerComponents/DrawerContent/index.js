@@ -9,9 +9,10 @@ import Animated from 'react-native-reanimated';
 import OutfitRegular from '../../Texts/OutfitRegular';
 import CustomButton from '../../Buttons/CustomButton';
 import GeneralPopup from '../../popups/GeneralPopup';
-import { generalImages } from '../../../assets/images';
-import { removeToken } from '../../../state/auth';
-import { useDispatch } from 'react-redux';
+import {generalImages} from '../../../assets/images';
+import {removeToken} from '../../../state/auth';
+import {useDispatch} from 'react-redux';
+import useProfile from '../../../Hooks/useProfile';
 // import {
 //   logout,
 //   LogoutUser,
@@ -34,6 +35,8 @@ const DrawerContent = props => {
   // console.log("user",user);
   const dispatch = useDispatch();
 
+  const {profile} = useProfile();
+
   const initialOpacity = new Animated.Value(1);
   const initialMove = new Animated.Value(0);
   const endOpacity = 0;
@@ -48,7 +51,7 @@ const DrawerContent = props => {
   //   });
   // }, []);
   const logoutUser = () => {
-    dispatch(removeToken(null))
+    dispatch(removeToken(null));
     // dispatch(logout)
     // dispatch(logout());
     // dispatch(LogoutUser());
@@ -99,15 +102,13 @@ const DrawerContent = props => {
       <Animated.View style={[styles.header, animatedStylesImage]}>
         <View style={styles.profileImageContainer}>
           <Image
-            source={ generalImages.defaultUserImage }
+            source={generalImages.defaultUserImage}
             style={styles.profileImage}
           />
         </View>
 
         <View style={styles.headerRight}>
-          <OutfitRegular style={styles.username}>
-            Atlas Corrigan
-          </OutfitRegular>
+          <OutfitRegular style={styles.username}>{profile?.name}</OutfitRegular>
         </View>
       </Animated.View>
       <View style={styles.routeContainer}>

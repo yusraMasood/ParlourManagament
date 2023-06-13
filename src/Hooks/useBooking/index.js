@@ -132,22 +132,23 @@ const useBooking = () => {
       // throw new Error(error);
     }
   };
-  const postReview = async ({bookingid, id, rating, review}) => {
-    console.log('id, rating, review', bookingid, id, rating, review);
+  const postReview = async ({id, rating, comment}) => {
+    // console.log('id, rating, review', bookingid, id, rating, review);
     dispatch(toggleGlobalLoader(true));
     try {
-      if (rating < 0) {
-        Toast.error('Please give some rating.');
-        throw new Error('Please give some rating.');
-      }
-      if (review.trim() === '') {
+      // if (rating < 0) {
+      //   Toast.error('Please give some rating.');
+      //   throw new Error('Please give some rating.');
+      // }
+      if (comment.trim() === '') {
         Toast.error('Please add review.');
         throw new Error('Please add review.');
       }
       const response = await dispatch(
-        PostReview({bookingid, id, rating, review}),
+        PostReview({id, rating, comment}),
       ).unwrap();
       dispatch(toggleGlobalLoader(false));
+      Toast.success("Successfully posted!")
       return response;
     } catch (e) {
       dispatch(toggleGlobalLoader(false));

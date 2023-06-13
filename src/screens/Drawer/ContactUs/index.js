@@ -9,6 +9,8 @@ import CustomButton from '../../../components/Buttons/CustomButton';
 // import {useDispatch, useSelector} from 'react-redux';
 // import {showToast} from '../../../Api/HelperFunction';
 import ContentContainer from '../../../components/wrappers/ContentContainer';
+import { vw } from '../../../utils/dimensions';
+import { Toast } from '../../../Api/APIHelpers';
 // import {validateEmail} from '../../../utils/Validations';
 
 const ContactUs = props => {
@@ -16,7 +18,7 @@ const ContactUs = props => {
 
   const [name, setName] = useState();
   // console.log("profile user",profileUser);
-  const [email, setEmail] = useState("Atlas@mgmai.com");
+  const [email, setEmail] = useState('Atlas@mgmai.com');
   //profileUser?.email
   const [phone, setPhone] = useState('');
   const [subject, setSubject] = useState('');
@@ -30,32 +32,36 @@ const ContactUs = props => {
   const messageRef = useRef(null);
   // const dispatch = useDispatch();
 
-  // const submitForm = () => {
-  //   if (name == '' || email == '' || subject == '' || message == '') {
-  //     return showToast('Please Fill all Fields');
-  //   }
-  //   if (!validateEmail(email)) {
-  //     return showToast('Please enter valid email address');
-  //   }
+  const submitForm = () => {
+    // if (name == '' || email == '' || subject == '' || message == '') {
+    //   return showToast('Please Fill all Fields');
+    // }
+    // if (!validateEmail(email)) {
+    //   return showToast('Please enter valid email address');
+    // }
 
-  //   const body = {
-  //     firstName: name,
-  //     email: email,
-  //     phone: phone,
-  //     subject: subject,
-  //     message: message,
-  //   };
-  //   console.log('body', body);
-  //   dispatch(GetContactUs(body)).then(({type}) => {
-  //     if (type == 'home/contactUs/fulfilled') {
-  //       props.navigation.goBack();
-  //     }
-  //   });
-  // };
+    // const body = {
+    //   firstName: name,
+    //   email: email,
+    //   phone: phone,
+    //   subject: subject,
+    //   message: message,
+    // };
+    // console.log('body', body);
+    // dispatch(GetContactUs(body)).then(({type}) => {
+    //   if (type == 'home/contactUs/fulfilled') {
+    //     props.navigation.goBack();
+    //   }
+    // });
+    Toast.success("Successfully Submitted!")
+    props?.navigation?.navigate('HomeScreen')
+  };
 
   return (
-    <ContentContainer aware>
-      <ScreenWrapper style={styles.container}>
+    <ScreenWrapper style={styles.container}>
+      <ContentContainer
+        aware
+        contentContainerStyle={{paddingHorizontal: vw * 5}}>
         {/* <InputField
                 reference={firstNameRef}
                 label="First Name" placeholder="Enter First Name" require
@@ -112,12 +118,13 @@ const ContactUs = props => {
           required
         />
         <View style={styles.buttonView}>
-          <CustomButton text="Send Feedback" 
-          // onPress={submitForm} 
+          <CustomButton
+            text="Send Feedback"
+            onPress={submitForm}
           />
         </View>
-      </ScreenWrapper>
-    </ContentContainer>
+      </ContentContainer>
+    </ScreenWrapper>
   );
 };
 export default ContactUs;
