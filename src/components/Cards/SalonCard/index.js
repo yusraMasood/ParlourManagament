@@ -1,6 +1,6 @@
 import React from 'react';
 import {View, Image, TouchableOpacity} from 'react-native';
-import {icons} from '../../../assets/images';
+import {generalImages, icons} from '../../../assets/images';
 import OutfitBold from '../../Texts/OutfitBold';
 import OutfitRegular from '../../Texts/OutfitRegular';
 import styles from './styles';
@@ -21,7 +21,7 @@ const SalonCard = props => {
       style={styles.container}
       onPress={handleSalonCardPress}>
       <View style={styles.imageContainer}>
-        <Image source={image} style={styles.imageStyle} />
+        <Image source={image} defaultSource={generalImages.defaultImage} style={styles.imageStyle} />
       </View>
       <View style={styles.contentContainer}>
         <OutfitBold style={styles.titleStyle}>{title}</OutfitBold>

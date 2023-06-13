@@ -7,6 +7,7 @@ import {generalImages} from '../../../../assets/images';
 import useBooking from '../../../../Hooks/useBooking';
 import SalonCard from '../../../../components/Cards/SalonCard';
 import EmptyComponent from '../../../../components/EmptyComponent';
+import { urls } from '../../../../Api/configs';
 
 const SalonListScreen = props => {
   const serviceId = props?.route?.params?.serviceId;
@@ -87,8 +88,8 @@ const SalonListScreen = props => {
         id={item?._id}
         title={item?.title}
         description={item?.description}
-        image={generalImages.defaultImage}
-        // image={item?.image ? item?.image : generalImages.noImage}
+        // image={generalImages.defaultImage}
+        image={item?.image ? {uri: urls.imageUrl + item?.image} : generalImages.defaultImage}
         rating={item?.averageRating}
       />
     );

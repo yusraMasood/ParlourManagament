@@ -1,5 +1,6 @@
 export const urls = {
   v1: `https://geoff-backend-production-c1d4.up.railway.app/user/api`, //dev
+  imageUrl: `https://geoff-backend-production-c1d4.up.railway.app/images/`, //dev
 };
 export const base_url = urls.v1;
 export const endpoints = {

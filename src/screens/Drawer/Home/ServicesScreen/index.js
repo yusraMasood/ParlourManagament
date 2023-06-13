@@ -106,16 +106,6 @@ const ServicesScreen = props => {
         </OutfitMedium>
       </TouchableOpacity>
     );
-    return (
-      <SalonCard
-        id={item?._id}
-        title={item?.title}
-        description={item?.description}
-        image={generalImages.defaultImage}
-        // image={item?.image ? item?.image : generalImages.noImage}
-        rating={item?.averageRating}
-      />
-    );
   };
 
   const renderHeader = (

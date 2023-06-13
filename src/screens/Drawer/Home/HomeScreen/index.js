@@ -10,6 +10,7 @@ import useProfile from '../../../../Hooks/useProfile';
 import OutfitSemiBold from '../../../../components/Texts/OutfitSemiBold';
 import {vh} from '../../../../utils/dimensions';
 import SalonCard from '../../../../components/Cards/SalonCard';
+import { urls } from '../../../../Api/configs';
 
 const HomeScreen = props => {
   const {getNearestSalons, getServices} = useBooking();
@@ -97,8 +98,8 @@ const HomeScreen = props => {
         id={item?._id}
         title={item?.title}
         description={item?.description}
-        image={generalImages.defaultImage}
-        // image={item?.image ? item?.image : generalImages.noImage}
+        // image={generalImages.defaultImage}
+        image={item?.image ? {uri: urls?.imageUrl + item?.image} : generalImages.defaultImage}
         rating={item?.averageRating}
       />
     );
