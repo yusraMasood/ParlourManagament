@@ -7,7 +7,7 @@ export const BookSalon = createAsyncThunk('book/bookSalon', async data => {
   console.log('data', data);
   try {
     let response;
-    await post(endpoints.book.bookSalon, data, true)
+    await post(endpoints.book.bookSalon, data, false)
       .then(res => {
         response = res;
       })

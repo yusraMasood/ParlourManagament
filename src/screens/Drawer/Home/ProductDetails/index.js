@@ -6,6 +6,8 @@ import {
   FlatList,
   ScrollView,
   TouchableOpacity,
+  Linking,
+  RefreshControl,
 } from 'react-native';
 import {generalImages, icons} from '../../../../assets/images';
 import CustomButton from '../../../../components/Buttons/CustomButton';
@@ -30,8 +32,32 @@ const ProductDetails = props => {
   const [isLoading, setIsLoading] = useState(false);
   const [responseData, setResponseData] = useState({});
 
+  const handleOnRefresh = () => {
+    getData();
+  };
+
+  const handleServices = () => {
+    props?.navigation.navigate('ServicesScreen', {
+      services: responseData?.services,
+    });
+  };
+
+  const openMap = () => {
+    const url = `https://www.google.com/maps/search/?api=1&query=${responseData?.location?.coordinates[0]},${responseData?.location?.coordinates[1]}`;
+    Linking.canOpenURL(url).then(supported => {
+      if (supported) {
+        Linking.openURL(url);
+      } else {
+        console.log("Don't know how to open URI: " + url);
+      }
+    });
+  };
+
   const handleBookPress = () => {
-    props?.navigation.navigate('BookingScreen');
+    // props?.navigation.navigate('BookingScreen');
+    props?.navigation.navigate('ServicesScreen', {
+      services: responseData?.services,
+    });
   };
 
   const getData = async () => {
@@ -63,10 +89,14 @@ const ProductDetails = props => {
         imageStyle={styles.imgBorder}></ImageBackground>
     );
   };
-  // console.log('productDetail', responseData);
+  console.log('productDetail', responseData?.services);
   return (
     <ScreenWrapper>
-      <ContentContainer contentContainerStyle={styles.scroll}>
+      <ContentContainer
+        contentContainerStyle={styles.scroll}
+        refreshControl={
+          <RefreshControl refreshing={refreshing} onRefresh={handleOnRefresh} />
+        }>
         <View style={styles.productImages}>
           <FlatList
             data={[1, 2, 3]}
@@ -81,12 +111,15 @@ const ProductDetails = props => {
               {responseData?.title}
             </OutfitMedium>
           </View>
-          <TouchableOpacity style={styles.serviceBtnContainer}>
+          <TouchableOpacity
+            onPress={handleServices}
+            activeOpacity={0.99}
+            style={styles.serviceBtnContainer}>
             <OutfitRegular style={styles.textBtnStyle}>
               View Services
             </OutfitRegular>
           </TouchableOpacity>
-          <TouchableOpacity>
+          <TouchableOpacity onPress={openMap} activeOpacity={0.99}>
             <OutfitRegular style={styles.textBtnStyle}>
               Get Location
             </OutfitRegular>

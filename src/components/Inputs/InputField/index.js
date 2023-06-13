@@ -36,7 +36,7 @@ const InputField = props => {
             onChangeText={props.onChangeText}
             style={[styles.input, props.inputContainer]}
             placeholder={props.placeholder}
-            placeholderTextColor={colors.white}
+            placeholderTextColor={colors.greyText}
             // {...props}
           />
         {props.rightIcon2 && (

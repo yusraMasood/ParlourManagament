@@ -58,7 +58,7 @@ export const endpoints = {
     acceptOffer: (id, status) => `/v1/adopts/${id}/${status}`,
   },
   book: {
-    bookSalon: '/',
+    bookSalon: '/book-service',
     postReview: '/v1/user/add-review',
     nearest: '/home',
     services: '/services',

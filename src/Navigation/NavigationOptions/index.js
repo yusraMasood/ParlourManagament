@@ -17,6 +17,7 @@ const routesWithBackIcon = {
   OrderDetails: 'OrderDetails',
   EditProfileScreen: 'Edit Profile',
   BookingScreen: 'Book A Salon',
+  ServicesScreen: 'ServicesScreen',
 };
 const routesWithMenu = {
   HomeScreen: 'Home',
@@ -46,6 +47,7 @@ const titles = {
   PrivacyPolicy: 'Privacy Policy',
   ContactUs: 'Contact Us',
   BookingScreen: 'Book A Salon',
+  ServicesScreen: 'Services',
 };
 
 const NavigationOptions = navProps => {

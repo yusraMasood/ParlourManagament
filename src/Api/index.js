@@ -10,6 +10,7 @@ export const post = async (endpoint, body, formData, queryParams) => {
   const url = base_url + endpoint + dataToQueryParameter(queryParams);
   console.log("URLLLLLL POSTTT=======>>>>>>>", url);
   const configs = getConfigs("POST", body, formData);
+  console.log("Configs", configs);
   try {
     const networkResult = await performNetworkRequest(url, configs);
     console.log("NETWORK RESULT", networkResult);

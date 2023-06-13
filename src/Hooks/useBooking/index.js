@@ -2,6 +2,7 @@ import {useDispatch} from 'react-redux';
 import {getMessage, Toast} from '../../Api/APIHelpers';
 import {
   BookPhotographer,
+  BookSalon,
   GetGetSalonDetail,
   GetMyBooking,
   GetMyBookingDetail,
@@ -14,27 +15,71 @@ import {toggleGlobalLoader, toggleInlineLoader} from '../../state/general';
 
 const useBooking = () => {
   const dispatch = useDispatch();
-  const bookSalon = async data => {
-    // dispatch(toggleGlobalLoader(true));
+  const bookSalon = async ({
+    paymentType,
+    from,
+    to,
+    date,
+    serviceId,
+    card_number,
+    exp_month,
+    exp_year,
+    cvv,
+  }) => {
+    dispatch(toggleGlobalLoader(true));
     try {
-      var bookData = {
-        photographer_id: data?.id,
-        from_date: data?.fromDate,
-        to_date: data?.toDate,
-        additional_notes: data?.notes,
-        card_holder_name: data?.cardholderName,
-        card_number: data?.cardNumber,
-        exp_month_year: data?.expiryDate,
-        cvv_code: data?.cvv,
-        amount: data?.charges.toString(),
-      };
-      const response = await dispatch(BookPhotographer(bookData)).unwrap();
-      // dispatch(toggleGlobalLoader(false));
+      if (date.trim() === '') {
+        throw new Error('Please Enter Appointment Date');
+      }
+      if (from.trim() === '') {
+        throw new Error('Please Enter Your Start Time');
+      }
+      if (to.trim() === '') {
+        throw new Error('Please Enter Your End Time');
+      }
+      if (paymentType === 'card') {
+        if (card_number.trim() === '') {
+          throw new Error('Please Enter Card Number');
+        }
+        if (exp_month.trim() === '') {
+          throw new Error('Please Enter Expiry Month');
+        }
+        if (exp_year.trim() === '') {
+          throw new Error('Please Enter Expiry Year');
+        }
+        if (cvv.trim() === '') {
+          throw new Error('Please Enter CVV Number');
+        }
+        var bookData = {
+          paymentType,
+          from,
+          to,
+          date,
+          serviceId,
+          card_details: {
+            card_number,
+            exp_month,
+            exp_year,
+            cvv,
+          },
+        };
+      } else {
+        var bookData = {
+          paymentType,
+          from,
+          to,
+          date,
+          serviceId,
+        };
+      }
+
+      const response = await dispatch(BookSalon(bookData)).unwrap();
+      dispatch(toggleGlobalLoader(false));
       return response;
     } catch (error) {
       console.log('bookdata', error);
-      // dispatch(toggleGlobalLoader(false));
-      Toast.error(error);
+      dispatch(toggleGlobalLoader(false));
+      Toast.error(error?.message);
       // throw new Error(error);
     }
   };
@@ -62,7 +107,7 @@ const useBooking = () => {
       // throw new Error(error);
     }
   };
-  const getNearestSalons = async (data) => {
+  const getNearestSalons = async data => {
     // dispatch(toggleInlineLoader(true));
     try {
       const response = await dispatch(GetNearestSalons(data)).unwrap();

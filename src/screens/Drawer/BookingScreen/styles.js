@@ -8,20 +8,29 @@ const styles = StyleSheet.create({
     paddingTop: getStatusBarHeight(),
   },
   content: {
-    alignItems: 'center',
+    paddingHorizontal: vw * 5,
+    paddingBottom: vh * 5,
+    // alignItems: 'center',
   },
   titleText: {
-    width: vw * 84,
+    // width: vw * 84,
     fontSize: vh * 2.3,
     color: colors.white,
-    marginBottom: vh*2,
+    // marginBottom: vh * 2,
   },
   midHeadingText: {
-    marginTop: vh*5
+    marginTop: vh * 5,
   },
-  midInputContainer:{
+  midInputContainer: {
     flexDirection: 'row',
-    paddingHorizontal: vw*5
-  }
+    justifyContent: 'space-between',
+  },
+  ContentContainer: {
+    alignItems: 'center',
+    marginTop: vh * 5,
+  },
+  btnView: {
+    height: vh * 5.8,
+  },
 });
 export default styles;
