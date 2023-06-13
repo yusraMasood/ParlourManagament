@@ -117,11 +117,12 @@ const MyOrders = props => {
               item={item}
               bookingId={item?.booking_id}
               // price={}
-              // onPress={() =>
-              //   props.navigation.navigate('OrderDetails', {
-              //     status: item?.status,
-              //   })
-              // }
+              onPress={() =>
+                props.navigation.navigate('OrderDetails', {
+                  details: item,
+                  status: item?.status,
+                })
+              }
             />
           );
         }}
