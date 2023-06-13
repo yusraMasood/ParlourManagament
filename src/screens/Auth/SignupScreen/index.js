@@ -2,7 +2,7 @@ import React, {useState, useRef} from 'react';
 // import { styles } from 'react-native-material-ripple/styles';
 import {View, FlatList, Image} from 'react-native';
 import Ripple from 'react-native-material-ripple';
-import {icons} from '../../../assets/images';
+import {generalImages, icons} from '../../../assets/images';
 import CustomButton from '../../../components/Buttons/CustomButton';
 import InputField from '../../../components/Inputs/InputField';
 import OutfitBold from '../../../components/Texts/OutfitBold';
@@ -70,7 +70,7 @@ const SignupScreen = props => {
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
-        <Image source={icons.logo} style={styles.logo} />
+        <Image source={generalImages.appLogoImage} style={styles.logo} />
         <OutfitBold style={styles.titleText}>Sign Up</OutfitBold>
 
         <InputField

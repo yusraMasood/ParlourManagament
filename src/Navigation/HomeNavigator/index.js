@@ -25,11 +25,11 @@ const HomeNavigator = () => {
         component={ProductDetails}
         // options={{headerShown: false}}
       />
-      <HomeStack.Screen
+      {/* <HomeStack.Screen
         name="MyOrders"
         component={MyOrders}
         // options={{headerShown: false}}
-      />
+      /> */}
     </HomeStack.Navigator>
   );
 };

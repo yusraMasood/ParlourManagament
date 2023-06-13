@@ -4,7 +4,7 @@ import { vh, vw } from '../../../../utils/dimensions';
 const styles = StyleSheet.create({
   container: {
     alignItems: 'center',
-    backgroundColor: colors.black,
+    // backgroundColor: colors.black,
     // marginTop: vh * 4,
     flex: 1,
     width: vw * 100,

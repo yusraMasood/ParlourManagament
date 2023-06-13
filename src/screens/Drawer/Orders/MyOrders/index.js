@@ -115,11 +115,13 @@ const MyOrders = props => {
           return (
             <OrderCard
               item={item}
-              onPress={() =>
-                props.navigation.navigate('OrderDetails', {
-                  status: item?.status,
-                })
-              }
+              bookingId={item?.booking_id}
+              // price={}
+              // onPress={() =>
+              //   props.navigation.navigate('OrderDetails', {
+              //     status: item?.status,
+              //   })
+              // }
             />
           );
         }}

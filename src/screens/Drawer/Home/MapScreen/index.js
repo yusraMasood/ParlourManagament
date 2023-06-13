@@ -1,9 +1,5 @@
 import React, {useState, useEffect, useRef} from 'react';
-import {
-  View,
-  Image,
-  StyleSheet,
-} from 'react-native';
+import {View, Image, StyleSheet} from 'react-native';
 import styles from './styles';
 import {icons} from '../../../../assets/images';
 import MapView, {Marker} from 'react-native-maps';
@@ -14,6 +10,7 @@ import {
   getCurrentLocation,
 } from '../../../../utils/helperFunctions';
 import CustomButton from '../../../../components/Buttons/CustomButton';
+// import { checkLocationPermissions, getCurrentLocation, LATITUDE_DELTA, LONGITUDE_DELTA } from '../../../../utils/helperFunctions';
 
 const MapScreen = props => {
   const mapRef = useRef();
@@ -28,7 +25,10 @@ const MapScreen = props => {
 
   const handleDonePress = () => {
     // props.route.params.handleRoute(searchedAddress);
-    props.navigation.navigate('SalonListScreen');
+    props.navigation.navigate('SalonListScreen', {
+      lat: userLocation?.location?.latitude,
+      lat: userLocation?.location?.longitude,
+    });
   };
   const animateToRegion = location => {
     mapRef.current.animateToRegion(

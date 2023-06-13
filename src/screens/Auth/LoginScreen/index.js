@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 // import { styles } from 'react-native-material-ripple/styles';
 import {View, Image, Platform} from 'react-native';
 import {KeyboardAwareScrollView} from 'react-native-keyboard-aware-scrollview';
-import {icons} from '../../../assets/images';
+import {generalImages, icons} from '../../../assets/images';
 import CustomButton from '../../../components/Buttons/CustomButton';
 import InputField from '../../../components/Inputs/InputField';
 import OutfitBold from '../../../components/Texts/OutfitBold';
@@ -11,12 +11,13 @@ import AuthWrapper from '../../../components/wrappers/AuthWrapper';
 import RippleHOC from '../../../components/wrappers/Ripple';
 import styles from './styles';
 import useLogin from '../../../Hooks/useLogin';
+import {vh} from '../../../utils/dimensions';
 
 const LoginScreen = props => {
   const passwordRef = useRef(null);
 
   const {loginUser} = useLogin();
-  
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,7 +31,7 @@ const LoginScreen = props => {
       <KeyboardAwareScrollView
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.content}>
-        <Image source={icons.logo} style={styles.logo} />
+        <Image source={generalImages.appLogoImage} style={styles.logo} />
         <OutfitBold style={styles.titleText}>Login</OutfitBold>
         <InputField
           label="Email Address"
@@ -53,14 +54,18 @@ const LoginScreen = props => {
           rightIcon
           isPassword
         />
-        <RippleHOC
+        {/* <RippleHOC
           style={styles.forgotContainer}
           onPress={() => props.navigation.navigate('ForgotPassword')}>
           <OutfitRegular style={styles.forgotPassword}>
             Forgot Password?
           </OutfitRegular>
-        </RippleHOC>
-        <CustomButton text="LOGIN" onPress={submit} />
+        </RippleHOC> */}
+        <CustomButton
+          style={{marginTop: vh * 3}}
+          text="LOGIN"
+          onPress={submit}
+        />
 
         <View style={styles.signupAccount}>
           <OutfitRegular style={styles.dontAccountText}>

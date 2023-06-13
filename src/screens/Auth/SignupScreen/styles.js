@@ -7,15 +7,16 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
   },
-  calendar:{
-    marginTop: vh*2,
-    marginBottom: vh*1,
+  calendar: {
+    marginTop: vh * 2,
+    marginBottom: vh * 1,
   },
   logo: {
-    marginTop: vh * 10,
-    height: vh * 16,
-    width: vh * 16,
+    // marginTop: vh * 5,
+    height: vh * 30,
+    width: vh * 30,
     resizeMode: 'contain',
+    // backgroundColor: 'red',
   },
   facebookBtn: {
     marginTop: 0,
@@ -114,8 +115,8 @@ const styles = StyleSheet.create({
     marginTop: 0,
   },
   titleText: {
-    marginTop: vh * 2,
-    marginBottom: vh * 5,
+    // marginTop: vh * 2,
+    // marginBottom: vh * 5,
     fontSize: vh * 2.3,
     color: colors.white,
   },

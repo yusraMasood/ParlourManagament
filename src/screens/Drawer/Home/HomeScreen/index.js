@@ -22,14 +22,19 @@ const HomeScreen = props => {
   const [responseData, setResponseData] = useState(null);
   const [services, setServices] = useState([]);
 
+  const handleSalonList = () => {
+    props.navigation?.navigate('SalonListScreen');
+  };
+
   const handleServicePress = item => {
     props.navigation?.navigate('SalonListScreen', {
-      serviceId: item?.serviceType,
+      serviceId: item?.id,
     });
   };
 
   const getSalonServices = () => {
     getServices().then(res => {
+      console.log('res', res);
       setServices(res?.detail);
     });
   };
@@ -106,7 +111,7 @@ const HomeScreen = props => {
         activeOpacity={0.99}
         onPress={() => handleServicePress(item)}>
         <OutfitRegular style={styles.serviceNameText}>
-          {item?.service_name}
+          {item?.serviceName}
         </OutfitRegular>
       </TouchableOpacity>
     );
@@ -125,11 +130,26 @@ const HomeScreen = props => {
         showsHorizontalScrollIndicator={false}
         contentContainerStyle={{marginTop: vh * 1}}
       />
-      <OutfitMedium style={styles.dietTextProducts}>
-        Top Nearby Salons
-      </OutfitMedium>
+      <View
+        style={{
+          flexDirection: 'row',
+          justifyContent: 'space-between',
+          marginTop: vh * 3,
+        }}>
+        <OutfitMedium style={[styles.dietTextProducts, {marginTop: 0}]}>
+          Top Nearby Salons
+        </OutfitMedium>
+        <TouchableOpacity
+          onPress={handleSalonList}
+          activeOpacity={0.99}
+          style={styles.serviceBtnContainer}>
+          <OutfitRegular style={styles.textBtnStyle}>View All</OutfitRegular>
+        </TouchableOpacity>
+      </View>
     </View>
   );
+
+  // console.log('profile', services);
 
   return (
     <ScreenWrapper style={styles.containerMain}>

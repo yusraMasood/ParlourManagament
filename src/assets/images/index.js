@@ -28,6 +28,7 @@ export const generalImages = {
   defaultUserImage: require('./generalImages/defaultUserImage.png'),
   noImage: require('./generalImages/noImage.png'),
   defaultImage: require('./generalImages/defaultImage.jpeg'),
+  appLogoImage: require('./generalImages/appLogoImage.jpeg'),
   // defaultImg: require('./generalImages/defaultImg.png'),
   // jumright: require('./generalImages/bulgarianSplitSquatJumpRight.json'),
   // MilitaryPushUps: require('./generalImages/MilitaryPushUps.json'),

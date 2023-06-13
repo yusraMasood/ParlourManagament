@@ -6,9 +6,14 @@ import ScreenWrapper from '../../../../components/wrappers/ScreenWrapper';
 import {generalImages} from '../../../../assets/images';
 import useBooking from '../../../../Hooks/useBooking';
 import SalonCard from '../../../../components/Cards/SalonCard';
+import EmptyComponent from '../../../../components/EmptyComponent';
 
 const SalonListScreen = props => {
   const serviceId = props?.route?.params?.serviceId;
+  const lat = props?.route?.params?.lat ?? '';
+  const lng = props?.route?.params?.lng ?? '';
+
+  // console.log("type", typeof lat);
 
   const {getNearestSalons} = useBooking();
 
@@ -29,12 +34,20 @@ const SalonListScreen = props => {
     if (!isLoading) {
       setIsLoading(true);
       try {
-        // const data = {
-        //   page: currentPage,
-        //   per_page: 10,
-        //   service: serviceId,
-        // };
-        const response = await getNearestSalons();
+        const data = {
+          // page: currentPage,
+          // per_page: 10,
+        };
+        if (props?.route?.params?.serviceId) {
+          data.serviceId = serviceId;
+        }
+        if (props?.route?.params?.lat) {
+          data.lat = lat;
+        }
+        if (props?.route?.params?.lng) {
+          data.long = lng;
+        }
+        const response = await getNearestSalons(data);
         console.log('response', response);
         setResponseData(response?.detail);
         // if (response?.current_page === 1) {
@@ -89,12 +102,14 @@ const SalonListScreen = props => {
     </View>
   );
 
+  // console.log("responseData",responseData);
   return (
     <ScreenWrapper style={styles.containerMain}>
       <FlatList
         data={responseData}
         renderItem={renderFoodItems}
         ListHeaderComponent={renderHeader}
+        ListEmptyComponent={EmptyComponent}
         contentContainerStyle={styles.footer}
         refreshing={refreshing}
         onRefresh={handleOnRefresh}

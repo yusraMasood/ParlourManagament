@@ -47,7 +47,11 @@ const BookingScreen = props => {
       exp_month: expiryMonth,
       exp_year: expiryYear,
       cvv: cvv,
-    }).then(res => {});
+    }).then(res => {
+      if(res?.status){
+        props?.navigation?.navigate('OrderNavigator', {screen: 'MyOrders'})
+      }
+    });
   };
 
   return (

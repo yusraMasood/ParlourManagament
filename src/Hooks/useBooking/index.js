@@ -75,6 +75,7 @@ const useBooking = () => {
 
       const response = await dispatch(BookSalon(bookData)).unwrap();
       dispatch(toggleGlobalLoader(false));
+      Toast.success("Booked Successfully!");
       return response;
     } catch (error) {
       console.log('bookdata', error);
@@ -103,7 +104,7 @@ const useBooking = () => {
       return response;
     } catch (error) {
       // dispatch(toggleInlineLoader(false));
-      Toast.error(error);
+      Toast.error(error?.message);
       // throw new Error(error);
     }
   };
